@@ -1,11 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class LandingPage extends StatefulWidget {
-  const LandingPage({super.key});
-
   @override
-  // ignore: library_private_types_in_public_api
   _LandingPageState createState() => _LandingPageState();
 }
 
@@ -15,7 +13,7 @@ class _LandingPageState extends State<LandingPage> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/background.mp4')
+    _controller = VideoPlayerController.asset('assets/videos/background.mp4')
       ..initialize().then((_) {
         setState(() {});
         _controller.play();
@@ -47,7 +45,7 @@ class _LandingPageState extends State<LandingPage> {
               ),
             ),
 
-          // Overlay content
+          // Purple overlay
           Container(
             color: Colors.purple.withOpacity(0.85), // Purple overlay
           ),
@@ -120,5 +118,12 @@ class _LandingPageState extends State<LandingPage> {
         ],
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty<VideoPlayerController>('_controller', _controller));
   }
 }
