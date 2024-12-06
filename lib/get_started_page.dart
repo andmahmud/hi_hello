@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -56,19 +55,16 @@ class _LandingPageState extends State<LandingPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Logo
-                Text(
-                  'Hi Hello',
-                  style: TextStyle(
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                Image.asset(
+                  'assets/logo.png',
+                  height: 100,
+                  width: 100,
                 ),
 
                 SizedBox(height: 16),
 
                 // Subtitle
-                Text(
+                const Text(
                   'The platform for digital brand and identity.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -89,7 +85,7 @@ class _LandingPageState extends State<LandingPage> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Get Started',
                     style: TextStyle(
                       color: Colors.black,
@@ -103,12 +99,11 @@ class _LandingPageState extends State<LandingPage> {
                 // Login link
                 GestureDetector(
                   onTap: () {},
-                  child: Text(
+                  child: const Text(
                     'Already have an account? Login',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
-                      decoration: TextDecoration.underline,
                     ),
                   ),
                 ),
@@ -118,12 +113,5 @@ class _LandingPageState extends State<LandingPage> {
         ],
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty<VideoPlayerController>('_controller', _controller));
   }
 }
