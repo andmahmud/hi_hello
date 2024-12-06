@@ -1,17 +1,19 @@
+import 'package:HiHello/get_started_page.dart';
 import 'package:flutter/material.dart';
-import 'package:new_project/get_started_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Get Started Page',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       home: LandingPage(),
     );
   }
