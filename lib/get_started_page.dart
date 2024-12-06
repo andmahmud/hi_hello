@@ -33,7 +33,7 @@ class _LandingPageState extends State<LandingPage> {
         children: [
           // Background video
           if (_controller.value.isInitialized)
-            SizedBox.expand(
+            Positioned.fill(
               child: FittedBox(
                 fit: BoxFit.cover,
                 child: SizedBox(
@@ -45,8 +45,10 @@ class _LandingPageState extends State<LandingPage> {
             ),
 
           // Purple overlay
-          Container(
-            color: Colors.purple.withOpacity(0.85), // Purple overlay
+          Positioned.fill(
+            child: Container(
+              color: Colors.purple.withOpacity(0.85), // Purple overlay
+            ),
           ),
 
           // Main content
@@ -56,15 +58,15 @@ class _LandingPageState extends State<LandingPage> {
               children: [
                 // Logo
                 Image.asset(
-                  'assets/logo.png',
-                  height: 100,
-                  width: 100,
+                  'assets/images/logo.png',
+                  height: 150, // Increased size
+                  width: 150,
                 ),
 
                 SizedBox(height: 16),
 
                 // Subtitle
-                const Text(
+                Text(
                   'The platform for digital brand and identity.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -85,7 +87,7 @@ class _LandingPageState extends State<LandingPage> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     'Get Started',
                     style: TextStyle(
                       color: Colors.black,
@@ -99,11 +101,12 @@ class _LandingPageState extends State<LandingPage> {
                 // Login link
                 GestureDetector(
                   onTap: () {},
-                  child: const Text(
+                  child: Text(
                     'Already have an account? Login',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
+                      decoration: TextDecoration.underline,
                     ),
                   ),
                 ),
