@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
+
   @override
   _LandingPageState createState() => _LandingPageState();
 }
@@ -47,7 +49,8 @@ class _LandingPageState extends State<LandingPage> {
           // Purple overlay
           Positioned.fill(
             child: Container(
-              color: Colors.purple.withOpacity(0.85), // Purple overlay
+              color: Colors.purple
+                  .withOpacity(0.7), // Adjusted opacity for better visibility
             ),
           ),
 
@@ -63,10 +66,10 @@ class _LandingPageState extends State<LandingPage> {
                   width: 150,
                 ),
 
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Subtitle
-                Text(
+                const Text(
                   'The platform for digital brand and identity.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -75,19 +78,20 @@ class _LandingPageState extends State<LandingPage> {
                   ),
                 ),
 
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
 
                 // Get Started button
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 48),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16, horizontal: 48),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Get Started',
                     style: TextStyle(
                       color: Colors.black,
@@ -96,12 +100,12 @@ class _LandingPageState extends State<LandingPage> {
                   ),
                 ),
 
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Login link
                 GestureDetector(
                   onTap: () {},
-                  child: Text(
+                  child: const Text(
                     'Already have an account? Login',
                     style: TextStyle(
                       color: Colors.white,
