@@ -32,7 +32,7 @@ dependencies:
     sdk: flutter
   sign_in_button: ^3.2.0
   flutter_svg: ^2.0.16
-  video_player: ^2.9.2
+
 
 
 
@@ -62,7 +62,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/logo.svg
-    - assets/videos/background.mp4
+    
    
 
   # The following line ensures that the Material Icons font is

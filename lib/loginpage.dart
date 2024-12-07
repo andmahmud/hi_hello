@@ -13,8 +13,7 @@ class _LoginFormState extends State<LoginForm> {
   final TextEditingController _passwordController = TextEditingController();
   bool _isEmailSubmitted = false; // To control when the email is submitted
   bool _isPasswordVisible = false; // Control visibility of the password field
-  bool _isPasswordSubmitted =
-      false; // To control when the password is submitted
+// To control when the password is submitted
   String? _submittedEmail;
   String? _errorMessage;
 
@@ -101,27 +100,35 @@ class _LoginFormState extends State<LoginForm> {
 
               // Email Field (only visible when not submitted)
               if (!_isEmailSubmitted)
-                TextField(
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    labelStyle: TextStyle(
-                        color: Colors.purple), // Custom purple label color
-                    prefixIcon:
-                        Icon(Icons.email, color: Colors.purple), // Icon color
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      labelText: 'Enter your email', // Updated label text
+                      labelStyle: const TextStyle(
+                        color: Colors.purple, // Custom purple label color
+                      ),
+                      prefixIcon: const Icon(Icons.email,
+                          color: Colors.purple), // Icon color
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple),
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(10)), // Border radius of 10
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple),
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(10)), // Border radius of 10
+                      ),
+                      errorText: _errorMessage, // Show error message if present
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
-                    ),
-                    errorText: _errorMessage, // Show error message if present
+                    onChanged: (value) {
+                      setState(() {
+                        _errorMessage = null; // Clear error when the user types
+                      });
+                    },
                   ),
-                  onChanged: (value) {
-                    setState(() {
-                      _errorMessage = null; // Clear error when the user types
-                    });
-                  },
                 ),
 
               SizedBox(height: 10),
@@ -233,8 +240,7 @@ class _LoginFormState extends State<LoginForm> {
                     // Validate Password
                     if (_isValidPassword(_passwordController.text)) {
                       setState(() {
-                        _isPasswordSubmitted =
-                            true; // Hide password field after submit
+// Hide password field after submit
                       });
                     } else {
                       setState(() {
@@ -352,6 +358,86 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                 ],
+              ),
+
+              SizedBox(width: 20),
+              const Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment
+                      .center, // Centers the row content horizontally
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment
+                          .center, // Centers the column content vertically
+                      crossAxisAlignment: CrossAxisAlignment
+                          .center, // Ensures text is centered inside the column
+                      children: [
+                        Text(
+                          'Having trouble logging in?',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 2),
+
+              GestureDetector(
+                onTap: () {},
+                child: const Padding(
+                  padding: EdgeInsets.only(bottom: 0.0),
+                  child: Center(
+                    child: Text(
+                      'Contact us',
+                      style: TextStyle(
+                        color: Colors.purple,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment
+                      .center, // Centers the row content horizontally
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment
+                          .center, // Centers the column content vertically
+                      crossAxisAlignment: CrossAxisAlignment
+                          .center, // Ensures text is centered inside the column
+                      children: [
+                        Text(
+                          'By Continuing, you acknowledge that you have read',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          'Understood,and agree to our terms and aconditions.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
