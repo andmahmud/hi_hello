@@ -171,7 +171,7 @@ class _LoginFormState extends State<LoginForm> {
                     mainAxisAlignment:
                         MainAxisAlignment.center, // Center both icon and text
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.arrow_forward, // The icon you want to display
                         color: Colors.purple, // Purple color for the icon
                         size: 20, // Adjust the size of the icon
@@ -179,7 +179,7 @@ class _LoginFormState extends State<LoginForm> {
                       SizedBox(width: 8), // Space between the icon and text
                       Text(
                         '$_submittedEmail', // Display the submitted email
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 13,
                           color: Colors.purple, // Purple color for the text
                         ),
@@ -200,8 +200,7 @@ class _LoginFormState extends State<LoginForm> {
                     labelText: 'Password',
                     labelStyle: TextStyle(
                         color: Colors.purple), // Custom purple label color
-                    prefixIcon:
-                        Icon(Icons.lock, color: Colors.purple), // Icon color
+
                     suffixIcon: IconButton(
                       icon: Icon(
                         _isPasswordVisible
@@ -216,10 +215,10 @@ class _LoginFormState extends State<LoginForm> {
                         });
                       },
                     ),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.purple),
                     ),
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.purple),
                     ),
                     errorText:
@@ -425,7 +424,7 @@ class _LoginFormState extends State<LoginForm> {
                           .center, // Ensures text is centered inside the column
                       children: [
                         Text(
-                          'By Continuing, you acknowledge that you have read',
+                          'By Continuing, you acknowledge that you have read,',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 11,

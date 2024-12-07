@@ -75,7 +75,7 @@ class LandingPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Identity!',
+                          'identity.',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
