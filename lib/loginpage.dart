@@ -71,7 +71,7 @@ class _LoginFormState extends State<LoginForm> {
 
               // Heading Text with custom purple color
               const Text(
-                'Log In to your account',
+                'Log in to your account',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
