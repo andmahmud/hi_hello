@@ -40,7 +40,7 @@ class _LoginFormState extends State<LoginForm> {
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: ClonedLoginPage(),
+          child: LoginPage(),
         ),
       );
     }
@@ -90,7 +90,7 @@ class _LoginFormState extends State<LoginForm> {
                     child: Text(
                       'Don’t have an account? Sign Up',
                       style: TextStyle(
-                        color: Colors.purple,
+                        color: Colors.black,
                         fontSize: 16,
                       ),
                     ),
@@ -267,6 +267,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
               SizedBox(height: 10),
+
               // Or continue with social media login buttons
               const Column(
                 mainAxisAlignment: MainAxisAlignment.center,

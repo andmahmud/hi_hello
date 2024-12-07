@@ -28,7 +28,7 @@ class LandingPage extends StatelessWidget {
         builder: (context) => Padding(
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: ClonedLoginPage(),
+          child: LoginPage(),
         ),
       );
     }
