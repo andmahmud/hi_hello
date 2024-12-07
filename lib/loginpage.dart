@@ -110,8 +110,7 @@ class _LoginFormState extends State<LoginForm> {
                       labelStyle: const TextStyle(
                         color: Colors.black, // Custom purple label color
                       ),
-                      prefixIcon: const Icon(Icons.email,
-                          color: Colors.black), // Icon color
+
                       focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black),
                         borderRadius: BorderRadius.all(
@@ -152,7 +151,7 @@ class _LoginFormState extends State<LoginForm> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black, // Button color (purple)
+                    backgroundColor: Colors.purple, // Button color (purple)
                     padding: EdgeInsets.symmetric(vertical: 8),
                   ),
                   child: const Text(
@@ -250,11 +249,11 @@ class _LoginFormState extends State<LoginForm> {
                     }
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => newpage()),
+                      MaterialPageRoute(builder: (context) => Newpage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black, // Button color (purple)
+                    backgroundColor: Colors.purple, // Button color (purple)
                     padding: EdgeInsets.symmetric(vertical: 8),
                   ),
                   child: const Text(
