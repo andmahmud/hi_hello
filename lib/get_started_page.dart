@@ -1,84 +1,135 @@
-import 'package:HiHello/loginpage.dart';
-import 'package:HiHello/signuppage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart'; // For the logo
+import 'package:video_player/video_player.dart'; // For video player
+import 'loginpage.dart'; // Ensure this imports the LoginForm widget
+import 'signuppage.dart'; // Ensure this imports the Signuppage widget
 
-void main() {
-  runApp(MyApp());
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
+
+  @override
+  _LandingPageState createState() => _LandingPageState();
 }
 
-class MyApp extends StatelessWidget {
+class _LandingPageState extends State<LandingPage> {
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Get Started Page',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+  void initState() {
+    super.initState();
+    // Initialize the video player controller with the video asset or network URL
+    _controller = VideoPlayerController.asset('assets/videos/background.mp4')
+      ..setLooping(true) // Makes the video loop
+      ..setVolume(1.0); // Adjust volume (0.0 to 1.0)
+
+    _initializeVideoPlayerFuture = _controller.initialize();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose(); // Dispose the controller when the widget is disposed
+  }
+
+  void _showLoginModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: LoginForm(),
       ),
-      home: LandingPage(),
     );
   }
-}
 
-class LandingPage extends StatelessWidget {
+  void _showsignupModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: Signuppage(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(
-          255, 174, 30, 200), // Background color of the page
+      backgroundColor: const Color.fromARGB(255, 174, 30, 200),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: 20.0), // Horizontal padding
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
-            mainAxisAlignment:
-                MainAxisAlignment.start, // Align the content at the top
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Logo Very Close to the Top
+              // Logo
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 0.0), // No padding to make logo as close as possible
-                child: Image.asset(
-                  'assets/images/logo.png', // Path to your logo
-                  height: 350, // Large height for the logo
-                  width: 350, // Large width for the logo
+                padding: const EdgeInsets.only(top: 0.0),
+                child: SvgPicture.asset(
+                  'assets/images/logo.svg', // Path to your SVG logo
+                  height: 200,
+                  width: 200,
                 ),
               ),
-              const SizedBox(height: 30), // Space after the logo
+              const SizedBox(height: 30),
 
-              // Title text with color
+              // Video Player (Beneath the logo)
+              FutureBuilder(
+                future: _initializeVideoPlayerFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return AspectRatio(
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: VideoPlayer(_controller),
+                    );
+                  } else {
+                    return CircularProgressIndicator(); // Loading indicator while the video loads
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+
+              // Description Text
               const Padding(
                 padding: EdgeInsets.only(bottom: 10.0),
                 child: Center(
-                  child: Text(
-                    'The Platform for Digital Brands and Identity!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-
-                      color: Colors.white, // Text color
-                    ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'The Platform for Digital Brands and',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        'Identity!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-
               const SizedBox(height: 40),
 
-              // Get Started button with custom color
+              // Get Started Button
+              // Get Started Button
               ElevatedButton(
-                onPressed: () {
-                  // Navigate to the next screen
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => NextPage()),
-                  );
-                },
+                onPressed: () => _showsignupModal(context), // Show signup modal
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white, // Button color
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 90,
-                  ),
+                  backgroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 90),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -86,34 +137,23 @@ class LandingPage extends StatelessWidget {
                 child: const Text(
                   'Get Started',
                   style: TextStyle(
-                    color: Colors.black, // Button text color
+                    color: Colors.black,
                     fontSize: 16,
                   ),
                 ),
               ),
+              const SizedBox(height: 20),
 
-              const SizedBox(height: 16),
-
-              // Login link with color and underline
+              // Login Link
               GestureDetector(
-                onTap: () {
-                  // Use onTap instead of onPressed for GestureDetector
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const loginPage()), // Navigate to LoginPage
-                  );
-                },
+                onTap: () => _showLoginModal(context),
                 child: const Padding(
                   padding: EdgeInsets.only(bottom: 0.0),
                   child: Text(
                     'Already have an account? Login',
                     style: TextStyle(
-                      color: Colors.white, // Link color
-                      fontSize: 16,
-                      decoration: TextDecoration
-                          .underline, // Optional: makes the text underlined like a link
+                      color: Colors.white,
+                      fontSize: 15,
                     ),
                   ),
                 ),

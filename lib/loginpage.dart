@@ -1,107 +1,209 @@
+import 'package:HiHello/signuppage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart'; // Import flutter_svg package
+import 'package:sign_in_button/sign_in_button.dart'; // Import sign_in_button package
 
-class loginPage extends StatefulWidget {
-  const loginPage({super.key});
-
+class LoginForm extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginFormState createState() => _LoginFormState();
 }
 
-class _LoginPageState extends State<loginPage> {
-  // Text editing controller for the email input
+class _LoginFormState extends State<LoginForm> {
   final TextEditingController _emailController = TextEditingController();
-
-  // Global key for the form
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    super.dispose();
-  }
-
-  // Function to handle login (just a print for now)
-  void _login() {
-    if (_formKey.currentState!.validate()) {
-      // If the form is valid, show a snackbar
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Logging in with ${_emailController.text}')),
-      );
-      // You can add navigation or logic for actual login here
-    }
-  }
+  bool _isEmailFilled = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Center(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Email Input Field
-                TextFormField(
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'Enter your email',
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (value) {
-                    // Email validation logic
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
-                    }
-                    // Basic email format validation
-                    if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                      return 'Please enter a valid email address';
-                    }
-                    return null;
-                  },
-                ),
+    void _showsignupModal(BuildContext context) {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (context) => Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Signuppage(),
+        ),
+      );
+    }
 
-                const SizedBox(height: 20),
+    // Get screen width and height for responsiveness
+    double screenWidth = MediaQuery.of(context).size.width;
 
-                // Login Button
-                ElevatedButton(
-                  onPressed: _login,
-                  child: const Text('Login'),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 16, horizontal: 48),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-
-                // Link to "Don't have an account?" page (optional)
-                GestureDetector(
-                  onTap: () {
-                    // Navigate to the registration page or show a message
-                    print("Navigate to sign-up page");
-                  },
-                  child: const Text(
-                    'Don\'t have an account? Sign up',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 16,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Logo with color customization (for SVG logo)
+          Center(
+            child: SvgPicture.asset(
+              'assets/images/logo.svg', // Replace with your SVG logo path
+              height: screenWidth * 0.3, // Responsive logo size
+              color: Colors.purple, // Apply purple color to the logo
             ),
           ),
-        ),
+          SizedBox(height: 10),
+
+          // Heading Text with custom purple color
+          const Text(
+            'Log In to your account',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.purple, // Custom purple color for heading
+            ),
+            textAlign: TextAlign.center,
+          ),
+
+          SizedBox(height: 20),
+
+          GestureDetector(
+            onTap: () => _showsignupModal(context),
+            child: const Padding(
+              padding: EdgeInsets.only(bottom: 0.0),
+              child: Center(
+                child: Text(
+                  'Already have an account? Login',
+                  style: TextStyle(
+                    color: Colors.purple,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+
+          // Email Field
+          TextField(
+            controller: _emailController,
+            decoration: const InputDecoration(
+              labelText: 'Email',
+              labelStyle:
+                  TextStyle(color: Colors.purple), // Custom purple label color
+              prefixIcon: Icon(Icons.email, color: Colors.purple), // Icon color
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.purple),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.purple),
+              ),
+            ),
+            onChanged: (value) {
+              setState(() {
+                _isEmailFilled = value.isNotEmpty;
+              });
+            },
+          ),
+          SizedBox(height: 10),
+
+          // Password Field (Only visible when email is filled)
+          if (_isEmailFilled)
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Password',
+                labelStyle: TextStyle(
+                    color: Colors.purple), // Custom purple label color
+                prefixIcon:
+                    Icon(Icons.lock, color: Colors.purple), // Icon color
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.purple),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.purple),
+                ),
+              ),
+              obscureText: true,
+            ),
+
+          SizedBox(height: 10),
+
+          // Log In Button with purple color
+          ElevatedButton(
+            onPressed: () {
+              // Handle login
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.purple, // Button color (purple)
+              padding: EdgeInsets.symmetric(vertical: 8),
+            ),
+            child: const Text(
+              'Submit',
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.white, // Text color inside the button
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+
+          const Text(
+            'Or continue With',
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.black, // Custom purple color for heading
+            ),
+            textAlign: TextAlign.center,
+          ),
+
+          SizedBox(height: 10),
+
+          // Social Media Login Buttons
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: SignInButton(
+                  Buttons.google,
+                  onPressed: () {
+                    // Handle Google login
+                    print("Google login pressed");
+                  },
+                  padding: EdgeInsets.all(5),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: SignInButton(
+                  Buttons.facebook,
+                  onPressed: () {
+                    // Handle Google login
+                    print("Google login pressed");
+                  },
+                  padding: EdgeInsets.all(6),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: SignInButton(
+                  Buttons.apple,
+                  onPressed: () {
+                    // Handle Google login
+                    print("Google login pressed");
+                  },
+                  padding: EdgeInsets.all(6),
+                ),
+              ),
+              SizedBox(width: 20),
+              // Facebook Button with purple background
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: SignInButton(
+                  Buttons.microsoft,
+                  onPressed: () {
+                    // Handle Facebook login
+                    print("Facebook login pressed");
+                  },
+                  padding: EdgeInsets.all(6),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
