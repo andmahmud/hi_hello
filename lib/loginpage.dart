@@ -1,3 +1,4 @@
+import 'package:HiHello/newpage.dart';
 import 'package:HiHello/signuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // Import flutter_svg package
@@ -39,7 +40,7 @@ class _LoginFormState extends State<LoginForm> {
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: Signuppage(),
+          child: ClonedLoginPage(),
         ),
       );
     }
@@ -87,7 +88,7 @@ class _LoginFormState extends State<LoginForm> {
                   padding: EdgeInsets.only(bottom: 0.0),
                   child: Center(
                     child: Text(
-                      'Already have an account? Login',
+                      'Don’t have an account? Sign Up',
                       style: TextStyle(
                         color: Colors.purple,
                         fontSize: 16,
@@ -248,6 +249,10 @@ class _LoginFormState extends State<LoginForm> {
                             'Password must be at least 6 characters';
                       });
                     }
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => newpage()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple, // Button color (purple)
