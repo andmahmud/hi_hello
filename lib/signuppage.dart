@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Signuppage extends StatelessWidget {
-  const Signuppage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,22 +12,22 @@ class Signuppage extends StatelessWidget {
           const Text('Log In',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center),
-          const SizedBox(height: 20),
-          const TextField(
+          SizedBox(height: 20),
+          TextField(
             decoration: InputDecoration(labelText: 'Username'),
           ),
-          const SizedBox(height: 10),
-          const TextField(
+          SizedBox(height: 10),
+          TextField(
             decoration: InputDecoration(labelText: 'Password'),
             obscureText: true,
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
               // Handle login
               Navigator.pop(context);
             },
-            child: const Text('Log In'),
+            child: Text('Log In'),
           ),
         ],
       ),

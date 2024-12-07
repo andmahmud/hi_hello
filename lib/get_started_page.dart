@@ -92,34 +92,43 @@ class _LandingPageState extends State<LandingPage> {
                   }
                 },
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
 
               // Description Text
               const Padding(
                 padding: EdgeInsets.only(bottom: 10.0),
-                child: Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        'The Platform for Digital Brands and',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment
+                      .center, // Centers the row content horizontally
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment
+                          .center, // Centers the column content vertically
+                      crossAxisAlignment: CrossAxisAlignment
+                          .center, // Ensures text is centered inside the column
+                      children: [
+                        Text(
+                          'The Platform for Digital Brands and',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Identity!',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
+                        Text(
+                          'Identity!',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
+
               const SizedBox(height: 40),
 
               // Get Started Button
@@ -142,7 +151,7 @@ class _LandingPageState extends State<LandingPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
 
               // Login Link
               GestureDetector(
