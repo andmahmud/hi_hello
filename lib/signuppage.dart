@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SimpleLoginPage extends StatefulWidget {
+  const SimpleLoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _ResponsiveLoginPageState();
+  State<SimpleLoginPage> createState() => _SimpleLoginPageState();
 }
 
-class _ResponsiveLoginPageState extends State<LoginPage> {
+class _SimpleLoginPageState extends State<SimpleLoginPage> {
   bool _isPasswordVisible = false; // Toggle for password visibility
   bool _isVerifyPasswordVisible =
       false; // Toggle for verify password visibility
@@ -17,22 +17,16 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       resizeToAvoidBottomInset:
-          true, // Allows content to adjust on keyboard appearance
+          true, // Prevent content from being pushed out of view
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus(); // Dismiss keyboard on outside tap
         },
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: screenWidth * 0.05,
-              vertical: screenHeight * 0.05,
-            ),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -40,21 +34,21 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                 Center(
                   child: SvgPicture.asset(
                     'assets/images/logo.svg',
-                    height: screenWidth * 0.3,
+                    height: 120, // Fixed logo height
                     color: Colors.purple,
                   ),
                 ),
 
-                SizedBox(height: screenHeight * 0.03),
+                const SizedBox(height: 20),
 
                 // Welcome Text
-                Center(
+                const Center(
                   child: Column(
                     children: [
                       Text(
                         'Create an account to get',
                         style: TextStyle(
-                          fontSize: screenWidth * 0.05,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.purple,
                         ),
@@ -62,7 +56,7 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                       Text(
                         'started!',
                         style: TextStyle(
-                          fontSize: screenWidth * 0.05,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.purple,
                         ),
@@ -71,7 +65,7 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                SizedBox(height: screenHeight * 0.03),
+                const SizedBox(height: 20),
 
                 // Email TextField
                 const TextField(
@@ -88,14 +82,14 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                SizedBox(height: screenHeight * 0.02),
+                const SizedBox(height: 10),
 
                 // Password TextField with visibility toggle
                 TextField(
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    labelStyle: TextStyle(color: Colors.purple),
-                    prefixIcon: Icon(Icons.lock, color: Colors.purple),
+                    labelStyle: const TextStyle(color: Colors.purple),
+                    prefixIcon: const Icon(Icons.lock, color: Colors.purple),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _isPasswordVisible
@@ -119,7 +113,7 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                   obscureText: !_isPasswordVisible,
                 ),
 
-                SizedBox(height: screenHeight * 0.02),
+                const SizedBox(height: 10),
 
                 // Verify Password TextField with visibility toggle
                 TextField(
@@ -150,7 +144,7 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                   obscureText: !_isVerifyPasswordVisible,
                 ),
 
-                SizedBox(height: screenHeight * 0.03),
+                const SizedBox(height: 20),
 
                 // Checkbox
                 Row(
@@ -163,10 +157,10 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                         });
                       },
                     ),
-                    Expanded(
+                    const Expanded(
                       child: Text(
                         "I agree to the Terms and Conditions and Privacy Policy",
-                        style: TextStyle(fontSize: screenWidth * 0.04),
+                        style: TextStyle(fontSize: 14),
                       ),
                     ),
                   ],
@@ -182,22 +176,18 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                       : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple,
-                    padding:
-                        EdgeInsets.symmetric(vertical: screenHeight * 0.015),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Create account',
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.045,
-                      color: Colors.white,
-                    ),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
 
-                SizedBox(height: screenHeight * 0.03),
+                const SizedBox(height: 20),
 
                 // Divider and Social Login Text
                 Row(
@@ -208,13 +198,11 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                         thickness: 1,
                       ),
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
                         "Or continue with",
-                        style: TextStyle(
-                            color: Colors.black, fontSize: screenWidth * 0.04),
+                        style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
                     ),
                     const Expanded(
@@ -226,7 +214,7 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                   ],
                 ),
 
-                SizedBox(height: screenHeight * 0.02),
+                const SizedBox(height: 10),
 
                 // Social Login Buttons
                 Column(
@@ -237,14 +225,14 @@ class _ResponsiveLoginPageState extends State<LoginPage> {
                         print("Google login pressed");
                       },
                     ),
-                    SizedBox(height: screenHeight * 0.01),
+                    const SizedBox(height: 10),
                     SignInButton(
                       Buttons.facebook,
                       onPressed: () {
                         print("Facebook login pressed");
                       },
                     ),
-                    SizedBox(height: screenHeight * 0.01),
+                    const SizedBox(height: 10),
                     SignInButton(
                       Buttons.apple,
                       onPressed: () {

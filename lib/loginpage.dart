@@ -40,7 +40,7 @@ class _LoginFormState extends State<LoginForm> {
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: LoginPage(),
+          child: SimpleLoginPage(),
         ),
       );
     }
