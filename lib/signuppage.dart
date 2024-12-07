@@ -1,3 +1,4 @@
+import 'package:HiHello/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sign_in_button/sign_in_button.dart';
@@ -17,9 +18,21 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    void _showloginModal(BuildContext context) {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (context) => Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: LoginForm(),
+        ),
+      );
+    }
+
     return Scaffold(
-      resizeToAvoidBottomInset:
-          true, // Prevent content from being pushed out of view
+      resizeToAvoidBottomInset: false, // Prevent resizing when keyboard appears
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus(); // Dismiss keyboard on outside tap
@@ -64,84 +77,113 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                     ],
                   ),
                 ),
+                SizedBox(height: 20),
 
+                GestureDetector(
+                  onTap: () => _showloginModal(context),
+                  child: const Padding(
+                    padding: EdgeInsets.only(bottom: 0.0),
+                    child: Center(
+                      child: Text(
+                        'Already have an account? Login',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 const SizedBox(height: 20),
 
                 // Email TextField
-                const TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    labelStyle: TextStyle(color: Colors.purple),
-                    prefixIcon: Icon(Icons.email, color: Colors.purple),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
+                const SizedBox(
+                  height: 40,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Enter your Email',
+                      labelStyle: TextStyle(color: Colors.purple),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple),
+                      ),
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
 
                 // Password TextField with visibility toggle
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    labelStyle: const TextStyle(color: Colors.purple),
-                    prefixIcon: const Icon(Icons.lock, color: Colors.purple),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _isPasswordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                        color: Colors.purple,
+                SizedBox(
+                  height: 40,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      labelStyle: const TextStyle(color: Colors.purple),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 12),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isPasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.purple,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isPasswordVisible = !_isPasswordVisible;
+                          });
+                        },
                       ),
-                      onPressed: () {
-                        setState(() {
-                          _isPasswordVisible = !_isPasswordVisible;
-                        });
-                      },
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple),
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple),
+                      ),
                     ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
-                    ),
+                    obscureText: !_isPasswordVisible,
                   ),
-                  obscureText: !_isPasswordVisible,
                 ),
 
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
 
                 // Verify Password TextField with visibility toggle
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Verify Password',
-                    labelStyle: const TextStyle(color: Colors.purple),
-                    prefixIcon: const Icon(Icons.lock, color: Colors.purple),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _isVerifyPasswordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                        color: Colors.purple,
+                SizedBox(
+                  height: 40,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Verify Password',
+                      labelStyle: const TextStyle(color: Colors.purple),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 8),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isVerifyPasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.purple,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isVerifyPasswordVisible =
+                                !_isVerifyPasswordVisible;
+                          });
+                        },
                       ),
-                      onPressed: () {
-                        setState(() {
-                          _isVerifyPasswordVisible = !_isVerifyPasswordVisible;
-                        });
-                      },
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple),
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple),
+                      ),
                     ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
-                    ),
+                    obscureText: !_isVerifyPasswordVisible,
                   ),
-                  obscureText: !_isVerifyPasswordVisible,
                 ),
 
                 const SizedBox(height: 20),
@@ -190,22 +232,22 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                 const SizedBox(height: 20),
 
                 // Divider and Social Login Text
-                Row(
+                const Row(
                   children: [
-                    const Expanded(
+                    Expanded(
                       child: Divider(
                         color: Colors.purple,
                         thickness: 1,
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
                         "Or continue with",
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Divider(
                         color: Colors.purple,
                         thickness: 1,
@@ -227,14 +269,14 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                     ),
                     const SizedBox(height: 10),
                     SignInButton(
-                      Buttons.facebook,
+                      Buttons.apple,
                       onPressed: () {
                         print("Facebook login pressed");
                       },
                     ),
                     const SizedBox(height: 10),
                     SignInButton(
-                      Buttons.apple,
+                      Buttons.microsoft,
                       onPressed: () {
                         print("Apple login pressed");
                       },
