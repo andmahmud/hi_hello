@@ -63,7 +63,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.purple,
+                          color: Colors.black,
                         ),
                       ),
                       Text(
@@ -71,7 +71,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.purple,
+                          color: Colors.black,
                         ),
                       ),
                     ],
@@ -87,7 +87,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                       child: Text(
                         'Already have an account? Login',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.purple,
                           fontSize: 15,
                         ),
                       ),
@@ -102,14 +102,14 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                   child: TextField(
                     decoration: InputDecoration(
                       labelText: 'Enter your Email',
-                      labelStyle: TextStyle(color: Colors.purple),
+                      labelStyle: TextStyle(color: Colors.black),
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.purple),
+                        borderSide: BorderSide(color: Colors.black),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.purple),
+                        borderSide: BorderSide(color: Colors.black),
                       ),
                     ),
                   ),
@@ -123,7 +123,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                   child: TextField(
                     decoration: InputDecoration(
                       labelText: 'Password',
-                      labelStyle: const TextStyle(color: Colors.purple),
+                      labelStyle: const TextStyle(color: Colors.black),
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 12),
                       suffixIcon: IconButton(
@@ -131,7 +131,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                           _isPasswordVisible
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: Colors.purple,
+                          color: Colors.black,
                         ),
                         onPressed: () {
                           setState(() {
@@ -140,10 +140,10 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                         },
                       ),
                       focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.purple),
+                        borderSide: BorderSide(color: Colors.black),
                       ),
                       enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.purple),
+                        borderSide: BorderSide(color: Colors.black),
                       ),
                     ),
                     obscureText: !_isPasswordVisible,
@@ -158,7 +158,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                   child: TextField(
                     decoration: InputDecoration(
                       labelText: 'Verify Password',
-                      labelStyle: const TextStyle(color: Colors.purple),
+                      labelStyle: const TextStyle(color: Colors.black),
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 5, horizontal: 8),
                       suffixIcon: IconButton(
@@ -166,7 +166,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                           _isVerifyPasswordVisible
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: Colors.purple,
+                          color: Colors.black,
                         ),
                         onPressed: () {
                           setState(() {
@@ -176,10 +176,10 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                         },
                       ),
                       focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.purple),
+                        borderSide: BorderSide(color: Colors.black),
                       ),
                       enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.purple),
+                        borderSide: BorderSide(color: Colors.black),
                       ),
                     ),
                     obscureText: !_isVerifyPasswordVisible,
@@ -236,7 +236,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                   children: [
                     Expanded(
                       child: Divider(
-                        color: Colors.purple,
+                        color: Colors.black,
                         thickness: 1,
                       ),
                     ),
@@ -249,7 +249,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                     ),
                     Expanded(
                       child: Divider(
-                        color: Colors.purple,
+                        color: Colors.black,
                         thickness: 1,
                       ),
                     ),

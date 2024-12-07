@@ -75,7 +75,7 @@ class _LoginFormState extends State<LoginForm> {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.purple, // Custom purple color for heading
+                  color: Colors.black, // Custom purple color for heading
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -90,7 +90,7 @@ class _LoginFormState extends State<LoginForm> {
                     child: Text(
                       'Don’t have an account? Sign Up',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.purple,
                         fontSize: 16,
                       ),
                     ),
@@ -108,17 +108,17 @@ class _LoginFormState extends State<LoginForm> {
                     decoration: InputDecoration(
                       labelText: 'Enter your email', // Updated label text
                       labelStyle: const TextStyle(
-                        color: Colors.purple, // Custom purple label color
+                        color: Colors.black, // Custom purple label color
                       ),
                       prefixIcon: const Icon(Icons.email,
-                          color: Colors.purple), // Icon color
+                          color: Colors.black), // Icon color
                       focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.purple),
+                        borderSide: BorderSide(color: Colors.black),
                         borderRadius: BorderRadius.all(
                             Radius.circular(10)), // Border radius of 10
                       ),
                       enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.purple),
+                        borderSide: BorderSide(color: Colors.black),
                         borderRadius: BorderRadius.all(
                             Radius.circular(10)), // Border radius of 10
                       ),
@@ -152,7 +152,7 @@ class _LoginFormState extends State<LoginForm> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple, // Button color (purple)
+                    backgroundColor: Colors.black, // Button color (purple)
                     padding: EdgeInsets.symmetric(vertical: 8),
                   ),
                   child: const Text(
@@ -173,7 +173,7 @@ class _LoginFormState extends State<LoginForm> {
                     children: [
                       const Icon(
                         Icons.arrow_forward, // The icon you want to display
-                        color: Colors.purple, // Purple color for the icon
+                        color: Colors.black, // Purple color for the icon
                         size: 20, // Adjust the size of the icon
                       ),
                       SizedBox(width: 8), // Space between the icon and text
@@ -181,7 +181,7 @@ class _LoginFormState extends State<LoginForm> {
                         '$_submittedEmail', // Display the submitted email
                         style: const TextStyle(
                           fontSize: 13,
-                          color: Colors.purple, // Purple color for the text
+                          color: Colors.black, // Purple color for the text
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -199,14 +199,14 @@ class _LoginFormState extends State<LoginForm> {
                   decoration: InputDecoration(
                     labelText: 'Password',
                     labelStyle: TextStyle(
-                        color: Colors.purple), // Custom purple label color
+                        color: Colors.black), // Custom purple label color
 
                     suffixIcon: IconButton(
                       icon: Icon(
                         _isPasswordVisible
                             ? Icons.visibility
                             : Icons.visibility_off, // Visibility icon
-                        color: Colors.purple,
+                        color: Colors.black,
                       ),
                       onPressed: () {
                         setState(() {
@@ -216,10 +216,10 @@ class _LoginFormState extends State<LoginForm> {
                       },
                     ),
                     focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
+                      borderSide: BorderSide(color: Colors.black),
                     ),
                     enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
+                      borderSide: BorderSide(color: Colors.black),
                     ),
                     errorText:
                         _errorMessage, // Show error message if password is invalid
@@ -254,7 +254,7 @@ class _LoginFormState extends State<LoginForm> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple, // Button color (purple)
+                    backgroundColor: Colors.black, // Button color (purple)
                     padding: EdgeInsets.symmetric(vertical: 8),
                   ),
                   child: const Text(
@@ -277,7 +277,7 @@ class _LoginFormState extends State<LoginForm> {
                       // Divider on the left side
                       Expanded(
                         child: Divider(
-                          color: Colors.purple, // Color of the line
+                          color: Colors.grey, // Color of the line
                           thickness: 1, // Thickness of the line
                           indent: 20, // Space before the line starts
                         ),
@@ -300,7 +300,7 @@ class _LoginFormState extends State<LoginForm> {
                       // Divider on the right side
                       Expanded(
                         child: Divider(
-                          color: Colors.purple, // Color of the line
+                          color: Colors.grey, // Color of the line
                           thickness: 1, // Thickness of the line
                           endIndent: 20, // Space after the line ends
                         ),
@@ -383,7 +383,7 @@ class _LoginFormState extends State<LoginForm> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
-                            color: Colors.black,
+                            color: Colors.grey,
                           ),
                         ),
                       ],
@@ -428,7 +428,7 @@ class _LoginFormState extends State<LoginForm> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 11,
-                            color: Colors.black,
+                            color: Colors.grey,
                           ),
                         ),
                         Text(
@@ -436,7 +436,7 @@ class _LoginFormState extends State<LoginForm> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 11,
-                            color: Colors.black,
+                            color: Colors.grey,
                           ),
                         ),
                       ],
