@@ -1,4 +1,7 @@
+import 'package:HiHello/Contactpage.dart';
+import 'package:HiHello/DiscoverPage.dart';
 import 'package:HiHello/ScanPage.dart';
+import 'package:HiHello/SettingsPage.dart';
 import 'package:HiHello/cards.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +15,10 @@ class _BusinessCardPageState extends State<BusinessCardPage> {
 
   final List<Widget> _pages = [
     Scanpage(),
-    const Center(child: Text('Contacts Page')),
+    const Contactpage(),
     CardsPage(),
-    const Center(child: Text('Discover Page')),
-    const Center(child: Text('Settings Page')),
+    const DiscoverPage(),
+    const SettingsPage(),
   ];
 
   // Handle Bottom Navigation Bar item click
