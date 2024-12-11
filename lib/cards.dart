@@ -16,6 +16,17 @@ class _CardsPageState extends State<CardsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Cards"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              print('Add button pressed');
+            },
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Expanded(

@@ -1,21 +1,6 @@
+import 'package:HiHello/ScanPage.dart';
 import 'package:HiHello/cards.dart';
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BusinessCardPage(),
-    );
-  }
-}
 
 class BusinessCardPage extends StatefulWidget {
   @override
@@ -23,16 +8,17 @@ class BusinessCardPage extends StatefulWidget {
 }
 
 class _BusinessCardPageState extends State<BusinessCardPage> {
-  int _selectedIndex = 2; // Default to 'Cards' tab
+  int _selectedIndex = 2;
 
   final List<Widget> _pages = [
-    ScanPage(),
-    ContactsPage(),
+    Scanpage(),
+    const Center(child: Text('Contacts Page')),
     CardsPage(),
-    DiscoverPage(),
-    SettingsPage(),
+    const Center(child: Text('Discover Page')),
+    const Center(child: Text('Settings Page')),
   ];
 
+  // Handle Bottom Navigation Bar item click
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -42,23 +28,9 @@ class _BusinessCardPageState extends State<BusinessCardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cards'),
-        centerTitle: true,
-        foregroundColor: Colors.black,
-        elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {
-              print('Add button pressed');
-            },
-          ),
-        ],
-      ),
-      body: _pages[_selectedIndex], // Display page based on selected index
+      body: _pages[_selectedIndex], // Display the selected page
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
+        currentIndex: _selectedIndex, // Set the selected tab index
         selectedItemColor: Colors.purple,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
@@ -86,43 +58,6 @@ class _BusinessCardPageState extends State<BusinessCardPage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-// Placeholder pages
-class ScanPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Scan Page'),
-    );
-  }
-}
-
-class ContactsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Contacts Page'),
-    );
-  }
-}
-
-class DiscoverPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Discover Page'),
-    );
-  }
-}
-
-class SettingsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Settings Page'),
     );
   }
 }
