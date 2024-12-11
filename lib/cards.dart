@@ -65,7 +65,7 @@ class CardsPage extends StatelessWidget {
                   // Contact details
                   const ListTile(
                     leading: Icon(Icons.email),
-                    title: Text('john.doe@example.com'),
+                    title: Text('john.doe@.com'),
                   ),
                   const ListTile(
                     leading: Icon(Icons.phone),
