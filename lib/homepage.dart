@@ -1,3 +1,4 @@
+import 'package:HiHello/cards.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -73,7 +74,7 @@ class _BusinessCardPageState extends State<BusinessCardPage> {
             label: 'Contacts',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.card_membership),
+            icon: Icon(Icons.card_membership_outlined),
             label: 'Cards',
           ),
           BottomNavigationBarItem(
@@ -105,15 +106,6 @@ class ContactsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Text('Contacts Page'),
-    );
-  }
-}
-
-class CardsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Cards Page'),
     );
   }
 }
