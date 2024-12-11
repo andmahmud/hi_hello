@@ -29,26 +29,36 @@ class _ScanpageState extends State<Scanpage> {
                 color: Colors.purple,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
             const Text(
               "Scan any contact information",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
+            Text(
+              "Scan a business card and instantly\ncreate a digital contact with our AI.",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[600],
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 100),
             ElevatedButton.icon(
               onPressed: () {},
               icon: const Icon(Icons.camera_alt),
               label: const Text("Scan"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
+                foregroundColor: Colors.white,
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 130, vertical: 18),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
             ),
