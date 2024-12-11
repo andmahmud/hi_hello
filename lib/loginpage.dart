@@ -1,4 +1,4 @@
-import 'package:HiHello/newpage.dart';
+import 'package:HiHello/homepage.dart';
 import 'package:HiHello/signuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // Import flutter_svg package
@@ -6,6 +6,7 @@ import 'package:sign_in_button/sign_in_button.dart'; // Import sign_in_button pa
 
 class LoginForm extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _LoginFormState createState() => _LoginFormState();
 }
 
@@ -32,7 +33,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    void _showsignupModal(BuildContext context) {
+    void showsignupModal(BuildContext context) {
       showModalBottomSheet(
         context: context,
         isScrollControlled: true,
@@ -40,7 +41,7 @@ class _LoginFormState extends State<LoginForm> {
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: SimpleLoginPage(),
+          child: const SimpleLoginPage(),
         ),
       );
     }
@@ -83,7 +84,7 @@ class _LoginFormState extends State<LoginForm> {
               SizedBox(height: 20),
 
               GestureDetector(
-                onTap: () => _showsignupModal(context),
+                onTap: () => showsignupModal(context),
                 child: const Padding(
                   padding: EdgeInsets.only(bottom: 0.0),
                   child: Center(
@@ -249,7 +250,8 @@ class _LoginFormState extends State<LoginForm> {
                     }
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Newpage()),
+                      MaterialPageRoute(
+                          builder: (context) => BusinessCardPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
