@@ -45,7 +45,6 @@ class _BusinessCardPageState extends State<BusinessCardPage> {
       appBar: AppBar(
         title: const Text('Cards'),
         centerTitle: true,
-        backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,
         actions: [
