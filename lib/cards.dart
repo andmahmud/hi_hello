@@ -69,7 +69,7 @@ class CardsPage extends StatelessWidget {
                   ),
                   const ListTile(
                     leading: Icon(Icons.phone),
-                    title: Text('+1 234 567 890'),
+                    title: Text('+ 567 890'),
                   ),
                 ],
               ),
