@@ -60,10 +60,10 @@ class _CardsPageState extends State<CardsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(" Cards"),
+        title: const Text(" Cards"),
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () {
               print('Add button pressed');
             },
@@ -75,7 +75,7 @@ class _CardsPageState extends State<CardsPage> {
         child: Column(
           children: [
             // Horizontal scrolling PageView for the cards
-            Container(
+            SizedBox(
               height: 550, // Set a fixed height to ensure scrollability
               child: PageView.builder(
                 controller: PageController(
@@ -88,7 +88,7 @@ class _CardsPageState extends State<CardsPage> {
                 itemCount: cards.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: EdgeInsets.symmetric(
+                    margin: const EdgeInsets.symmetric(
                         horizontal: 8), // Space between cards
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -109,7 +109,7 @@ class _CardsPageState extends State<CardsPage> {
                                   width: double.infinity,
                                   fit: BoxFit.cover,
                                   errorBuilder: (context, error, stackTrace) {
-                                    return Center(
+                                    return const Center(
                                         child: Icon(Icons
                                             .error)); // Handle image load errors
                                   },
@@ -129,9 +129,9 @@ class _CardsPageState extends State<CardsPage> {
                                       color: Colors.grey,
                                       borderRadius: BorderRadius.circular(8),
                                     ),
-                                    child: Text(
+                                    child: const Text(
                                       "NEW", // You can change the text dynamically based on conditions
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -177,10 +177,10 @@ class _CardsPageState extends State<CardsPage> {
                                   ],
                                 ),
                                 const SizedBox(height: 8),
-                                Row(
+                                const Row(
                                   children: [
                                     Icon(Icons.facebook, color: Colors.grey),
-                                    const SizedBox(width: 8),
+                                    SizedBox(width: 8),
                                     Text(
                                         "Facebook"), // Change this to dynamic social link text
                                   ],
@@ -220,7 +220,7 @@ class _CardsPageState extends State<CardsPage> {
                   ),
                   elevation: 5,
                   minimumSize:
-                      Size(double.infinity, 50), // Make button full width
+                      const Size(double.infinity, 50), // Make button full width
                 ),
                 onPressed: () {
                   print('Share button pressed for card $_currentIndex');
