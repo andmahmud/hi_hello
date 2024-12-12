@@ -168,19 +168,19 @@ class SettingsPage extends StatelessWidget {
             // CONTACTS Section
             buildSectionHeader('CONTACTS'),
             buildListTile(
-              icon: Icons.lock,
+              icon: Icons.emoji_emotions,
               title: 'Emojis for SoftCard Contacts',
             ),
             buildListTile(
-              icon: Icons.lock,
+              icon: Icons.bookmark_added,
               title: 'Export to other address books',
             ),
             buildListTile(
-              icon: Icons.lock,
+              icon: Icons.bookmark,
               title: 'Manage address books',
             ),
             buildListTile(
-              icon: Icons.lock,
+              icon: Icons.download,
               title: 'Export contacts',
             ),
           ],
