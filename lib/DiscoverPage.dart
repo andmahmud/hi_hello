@@ -28,7 +28,7 @@ class DiscoverPage extends StatelessWidget {
           Expanded(
             child: PageView(
               children: [
-                // First Page (No changes here)
+                // First Page
                 SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -68,7 +68,7 @@ class DiscoverPage extends StatelessWidget {
                               ),
                               const SizedBox(width: 16),
                               Image.asset(
-                                'assets/images/trees.png', // Replace with your asset path
+                                'assets/images/trees.png', // Same image used in the previous code
                                 height: 100,
                                 fit: BoxFit.cover,
                               ),
@@ -78,8 +78,22 @@ class DiscoverPage extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(10.0),
                           decoration: BoxDecoration(
-                            color: Colors.green[50],
-                            borderRadius: BorderRadius.circular(12.0),
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.green.shade100,
+                                Colors.green.shade300
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 8.0,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,7 +104,10 @@ class DiscoverPage extends StatelessWidget {
                               const Text(
                                 'We saved over 650 trees last year. Thanks for being part of HiHello’s sustainability efforts!',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16.0),
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -111,8 +128,7 @@ class DiscoverPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                // Second Page with "Nice" Styling
+                // Second Page
                 SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -152,7 +168,7 @@ class DiscoverPage extends StatelessWidget {
                               ),
                               const SizedBox(width: 16),
                               Image.asset(
-                                'assets/images/trees.png', // Replace with your asset path
+                                'assets/images/trees.png', // Same image used in the previous code
                                 height: 100,
                                 fit: BoxFit.cover,
                               ),
@@ -213,7 +229,7 @@ class DiscoverPage extends StatelessWidget {
                   ),
                 ),
 
-                // Third Page (No changes here)
+                // Third Page
                 SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -253,7 +269,7 @@ class DiscoverPage extends StatelessWidget {
                               ),
                               const SizedBox(width: 16),
                               Image.asset(
-                                'assets/images/trees.png', // Replace with your asset path
+                                'assets/images/trees.png', // Same image used in the previous code
                                 height: 100,
                                 fit: BoxFit.cover,
                               ),
