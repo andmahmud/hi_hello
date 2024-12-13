@@ -172,7 +172,7 @@ class SettingsPage extends StatelessWidget {
               title: 'Emojis for SoftCard Contacts',
             ),
             buildListTile(
-              icon: Icons.bookmark_added,
+              icon: Icons.import_export,
               title: 'Export to other address books',
             ),
             buildListTile(
@@ -183,6 +183,39 @@ class SettingsPage extends StatelessWidget {
               icon: Icons.download,
               title: 'Export contacts',
             ),
+            const SizedBox(height: 16),
+            Center(
+              child: Container(
+                width: 300,
+                height: 100,
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Loving HiHello?',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(height: 5),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.purple,
+                          foregroundColor: Colors.white),
+                      child: const Text('Leave a review'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Center(child: Text("Follow us to stay up to date")),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -237,3 +270,8 @@ class SettingsPage extends StatelessWidget {
     );
   }
 }
+
+void main() => runApp(MaterialApp(
+      home: const SettingsPage(),
+      theme: ThemeData(primarySwatch: Colors.purple),
+    ));
