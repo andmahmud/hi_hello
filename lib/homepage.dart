@@ -20,7 +20,7 @@ class _BusinessCardPageState extends State<BusinessCardPage> {
     Scanpage(),
     const Contactpage(),
     CardsPage(),
-    const DiscoverPage(),
+    DiscoverPage(),
     const SettingsPage(),
   ];
 

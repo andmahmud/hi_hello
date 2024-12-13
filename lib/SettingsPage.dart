@@ -226,7 +226,7 @@ class SettingsPage extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: IconButton(
-                    icon: const FaIcon(FontAwesomeIcons.twitter,
+                    icon: const FaIcon(FontAwesomeIcons.xTwitter,
                         color: Colors.black), // FontAwesome Twitter Icon
                     onPressed: () {}, // Define your action here
                   ),
