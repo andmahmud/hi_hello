@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -216,6 +217,47 @@ class SettingsPage extends StatelessWidget {
             const SizedBox(height: 20),
             const Center(child: Text("Follow us to stay up to date")),
             const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    icon: const FaIcon(FontAwesomeIcons.twitter,
+                        color: Colors.black), // FontAwesome Twitter Icon
+                    onPressed: () {}, // Define your action here
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    icon: const FaIcon(FontAwesomeIcons.instagram,
+                        color: Colors.black), // FontAwesome Twitter Icon
+                    onPressed: () {}, // Define your action here
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    icon: const FaIcon(FontAwesomeIcons.linkedinIn,
+                        color: Colors.black),
+                    onPressed: () {}, // Define your action here
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
           ],
         ),
       ),
@@ -270,8 +312,3 @@ class SettingsPage extends StatelessWidget {
     );
   }
 }
-
-void main() => runApp(MaterialApp(
-      home: const SettingsPage(),
-      theme: ThemeData(primarySwatch: Colors.purple),
-    ));
