@@ -125,7 +125,12 @@ class _ContactpageState extends State<Contactpage> {
       title: Text(name),
       subtitle: Text(subtitle),
       trailing: const Icon(Icons.arrow_forward_ios),
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProfilePage()),
+        );
+      },
     );
   }
 }
@@ -160,4 +165,116 @@ class HorizontalFilterButton extends StatelessWidget {
       ),
     );
   }
+}
+
+class ProfilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Mahmudul Hasan'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.more_vert),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Stack(
+            children: [
+              // Curved background with the image
+              ClipPath(
+                clipper: CustomCurveClipper(),
+                child: Container(
+                  height: 300, // Height of the curved container
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/image.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          // Name, Title, and Company
+          RichText(
+            text: const TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Engr.Mahmudul Hasan',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color:
+                        Colors.black, // Make sure to set the color for TextSpan
+                  ),
+                ),
+                TextSpan(
+                  text: ' Ph.D.',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.normal,
+                    color: Colors
+                        .black, // Match the color for consistent appearance
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 8),
+          const Text(
+            'Co-founder & CEO',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
+          const SizedBox(height: 4),
+          const Text(
+            'HiHello, Inc.',
+            style: TextStyle(
+                fontSize: 14, fontStyle: FontStyle.italic, color: Colors.grey),
+          ),
+          const SizedBox(height: 20),
+          // Description
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              'HiHello is a software platform for digital brand and identity that enables individuals and companies of all sizes to leverage digital business cards, email signatures & virtual backgrounds to present their brand.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 14, height: 1.5),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomCurveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height - 50); // Start at bottom-left
+    path.quadraticBezierTo(
+      size.width / 2, // Control point X
+      size.height, // Control point Y
+      size.width, // End point X
+      size.height - 50, // End point Y
+    );
+    path.lineTo(size.width, 0); // Go to the top-right corner
+    path.close(); // Close the path
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

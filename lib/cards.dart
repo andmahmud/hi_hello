@@ -60,7 +60,7 @@ class _CardsPageState extends State<CardsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(" Cards"),
+        title: const Text("Cards"),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
@@ -177,12 +177,11 @@ class _CardsPageState extends State<CardsPage> {
                                   ],
                                 ),
                                 const SizedBox(height: 8),
-                                const Row(
+                                Row(
                                   children: [
-                                    Icon(Icons.facebook, color: Colors.grey),
-                                    SizedBox(width: 8),
-                                    Text(
-                                        "Facebook"), // Change this to dynamic social link text
+                                    const Icon(Icons.link, color: Colors.grey),
+                                    const SizedBox(width: 8),
+                                    Text(cards[index].socialLink),
                                   ],
                                 ),
                                 const SizedBox(height: 8),
