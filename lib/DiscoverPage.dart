@@ -14,157 +14,271 @@ class DiscoverPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    blurRadius: 8,
-                    spreadRadius: 2,
-                  ),
-                ],
+            CarouselSlider(
+              options: CarouselOptions(
+                height:
+                    280, // Set the height for the carousel to ensure consistency
+
+                enlargeCenterPage: false, // Enlarge the center item
+                enableInfiniteScroll: false, // Enable infinite scroll
+                autoPlay: false, // Enable auto-play
+                autoPlayInterval: Duration(seconds: 3), // Auto-play interval
+                autoPlayAnimationDuration:
+                    Duration(milliseconds: 800), // Auto-play animation duration
+                viewportFraction: 0.8, // Control the fraction of viewport
               ),
-              child: Column(
-                children: [
-                  // Trees saved globally section
-                  Card(
-                    margin: const EdgeInsets.only(
-                        bottom: 16), // Add space between cards
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Row(
-                        mainAxisAlignment:
-                            MainAxisAlignment.spaceBetween, // Distribute items
-                        children: [
-                          // Column for Text
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment
-                                .start, // Align text to the left
+              items: [
+                // Trees saved globally section
+                Container(
+                  width:
+                      double.infinity, // Ensures the container takes full width
+                  height: 300, // Ensure all containers are the same height
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    children: [
+                      Card(
+                        margin: const EdgeInsets.only(bottom: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0), // Reduced padding
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                'Trees saved today, globally:',
-                                style: TextStyle(fontSize: 16),
+                              const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Trees saved today, globally:',
+                                    style: TextStyle(
+                                        fontSize: 14), // Reduced font size
+                                  ),
+                                  SizedBox(height: 6), // Reduced spacing
+                                  Text(
+                                    '1.71',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight
+                                            .bold), // Reduced font size
+                                  ),
+                                  SizedBox(height: 6), // Reduced spacing
+                                ],
                               ),
-                              SizedBox(height: 8),
-                              Text(
-                                '1.71',
-                                style: TextStyle(
-                                    fontSize: 40, fontWeight: FontWeight.bold),
+                              Image.asset(
+                                'assets/images/trees.png',
+                                height: 60, // Reduced image size
                               ),
-                              SizedBox(height: 8),
                             ],
                           ),
-
-                          // Image on the right side
-                          Image.asset(
-                            'assets/images/trees.png',
-                            height: 90,
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-
-                  // Sustainability section
-                  Card(
-                    margin: const EdgeInsets.only(
-                        bottom: 16), // Add space between cards
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Center(
-                              child: Icon(Icons.eco,
-                                  color: Colors.green, size: 32)),
-                          const SizedBox(height: 8),
-                          const Text(
-                            'We saved over 650 trees last year. Thanks for being part of HiHello’s sustainability efforts!',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14),
-                          ),
-                          TextButton(
-                            onPressed: () {}, // Add action
-                            child: const Text('Learn More',
-                                style: TextStyle(fontSize: 14)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  // Carousel Slider Section
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      height: 200, // Set the height for the slider
-                      enlargeCenterPage: true, // Enlarge the center item
-                      enableInfiniteScroll: true, // Enable infinite scroll
-                      autoPlay: true, // Enable auto-play
-                      autoPlayInterval:
-                          const Duration(seconds: 3), // Auto-play interval
-                      autoPlayAnimationDuration: const Duration(
-                          milliseconds: 800), // Auto-play animation duration
-                      viewportFraction: 0.8, // Control the fraction of viewport
-                    ),
-                    items: [
-                      // First Carousel Item
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
-                        decoration: BoxDecoration(
+                      Card(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
-                          color:
-                              Colors.blue, // Change the color as per your need
                         ),
-                        child: const Center(
-                          child: Text(
-                            'Item 1',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0), // Reduced padding
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Center(
+                                child: Icon(Icons.eco,
+                                    color: Colors.green,
+                                    size: 20), // Reduced icon size
+                              ),
+                              const SizedBox(height: 6), // Reduced spacing
+                              const Text(
+                                'We saved over 650 trees last year. Thanks for being part of HiHello’s sustainability efforts!',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 11), // Reduced font size
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: const Text('Learn More',
+                                    style: TextStyle(
+                                        fontSize: 11)), // Reduced font size
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      // Second Carousel Item
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color:
-                              Colors.green, // Change the color as per your need
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'Item 2',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        ),
-                      ),
-                      // Third Carousel Item
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Colors
-                              .orange, // Change the color as per your need
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'Item 3',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        ),
-                      ),
-                      // Add more items as needed
                     ],
                   ),
-                ],
-              ),
+                ),
+
+                // Sustainability section
+                Container(
+                  width:
+                      double.infinity, // Ensures the container takes full width
+                  height: 300, // Ensure all containers are the same height
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    children: [
+                      Card(
+                        margin: const EdgeInsets.only(bottom: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0), // Reduced padding
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Trees saved today, globally:',
+                                    style: TextStyle(
+                                        fontSize: 14), // Reduced font size
+                                  ),
+                                  SizedBox(height: 6), // Reduced spacing
+                                  Text(
+                                    '1.71',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight
+                                            .bold), // Reduced font size
+                                  ),
+                                  SizedBox(height: 6), // Reduced spacing
+                                ],
+                              ),
+                              Image.asset(
+                                'assets/images/trees.png',
+                                height: 60, // Reduced image size
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Card(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0), // Reduced padding
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Center(
+                                child: Icon(Icons.eco,
+                                    color: Colors.green,
+                                    size: 20), // Reduced icon size
+                              ),
+                              const SizedBox(height: 6), // Reduced spacing
+                              const Text(
+                                'We saved over 650 trees last year. Thanks for being part of HiHello’s sustainability efforts!',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 11), // Reduced font size
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: const Text('Learn More',
+                                    style: TextStyle(
+                                        fontSize: 11)), // Reduced font size
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // Sustainability section
+                Container(
+                  width:
+                      double.infinity, // Ensures the container takes full width
+                  height: 300, // Ensure all containers are the same height
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    children: [
+                      Card(
+                        margin: const EdgeInsets.only(bottom: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0), // Reduced padding
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Trees saved today, globally:',
+                                    style: TextStyle(
+                                        fontSize: 14), // Reduced font size
+                                  ),
+                                  SizedBox(height: 6), // Reduced spacing
+                                  Text(
+                                    '1.71',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight
+                                            .bold), // Reduced font size
+                                  ),
+                                  SizedBox(height: 6), // Reduced spacing
+                                ],
+                              ),
+                              Image.asset(
+                                'assets/images/trees.png',
+                                height: 60, // Reduced image size
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Card(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0), // Reduced padding
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Center(
+                                child: Icon(Icons.eco,
+                                    color: Colors.green,
+                                    size: 20), // Reduced icon size
+                              ),
+                              const SizedBox(height: 6), // Reduced spacing
+                              const Text(
+                                'We saved over 650 trees last year. Thanks for being part of HiHello’s sustainability efforts!',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 11), // Reduced font size
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: const Text('Learn More',
+                                    style: TextStyle(
+                                        fontSize: 11)), // Reduced font size
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
 
             // Review section

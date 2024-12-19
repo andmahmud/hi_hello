@@ -32,7 +32,7 @@ dependencies:
     sdk: flutter
   sign_in_button: ^3.2.0
   flutter_svg: ^2.0.16
-  carousel_slider: ^4.0.0
+  carousel_slider: ^5.0.0
   
 
   
