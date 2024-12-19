@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class DiscoverPage extends StatelessWidget {
   @override
@@ -98,6 +99,69 @@ class DiscoverPage extends StatelessWidget {
                         ],
                       ),
                     ),
+                  ),
+
+                  // Carousel Slider Section
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      height: 200, // Set the height for the slider
+                      enlargeCenterPage: true, // Enlarge the center item
+                      enableInfiniteScroll: true, // Enable infinite scroll
+                      autoPlay: true, // Enable auto-play
+                      autoPlayInterval:
+                          const Duration(seconds: 3), // Auto-play interval
+                      autoPlayAnimationDuration: const Duration(
+                          milliseconds: 800), // Auto-play animation duration
+                      viewportFraction: 0.8, // Control the fraction of viewport
+                    ),
+                    items: [
+                      // First Carousel Item
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color:
+                              Colors.blue, // Change the color as per your need
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'Item 1',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      // Second Carousel Item
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color:
+                              Colors.green, // Change the color as per your need
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'Item 2',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      // Third Carousel Item
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors
+                              .orange, // Change the color as per your need
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'Item 3',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      // Add more items as needed
+                    ],
                   ),
                 ],
               ),
