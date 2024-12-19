@@ -5,317 +5,355 @@ class DiscoverPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Discover',
-          style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-        centerTitle: false,
+        title: const Text('Discover', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.star_border, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView(
-              children: [
-                // First Page
-                SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 16.0),
-                          padding: const EdgeInsets.all(12.0),
-                          decoration: BoxDecoration(
-                            color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Row(
-                            children: [
-                              const Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Trees saved today, globally:',
-                                      style: TextStyle(
-                                        fontSize: 16.0,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    SizedBox(height: 8),
-                                    Text(
-                                      '1.71',
-                                      style: TextStyle(
-                                        fontSize: 48.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Image.asset(
-                                'assets/images/trees.png', // Same image used in the previous code
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.green.shade100,
-                                Colors.green.shade300
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                blurRadius: 8.0,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.eco,
-                                  color: Colors.green, size: 32),
-                              const SizedBox(height: 5),
-                              const Text(
-                                'We saved over 650 trees last year. Thanks for being part of HiHello’s sustainability efforts!',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  // Add link action
-                                },
-                                child: const Text(
-                                  'Learn More →',
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    blurRadius: 8,
+                    spreadRadius: 2,
                   ),
-                ),
-                // Second Page
-                SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 16.0),
-                          padding: const EdgeInsets.all(12.0),
-                          decoration: BoxDecoration(
-                            color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Row(
-                            children: [
-                              const Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Trees saved today, globally:',
-                                      style: TextStyle(
-                                        fontSize: 16.0,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    SizedBox(height: 8),
-                                    Text(
-                                      '1.71',
-                                      style: TextStyle(
-                                        fontSize: 48.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Image.asset(
-                                'assets/images/trees.png', // Same image used in the previous code
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.green.shade100,
-                                Colors.green.shade300
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                blurRadius: 8.0,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.eco,
-                                  color: Colors.green, size: 32),
-                              const SizedBox(height: 5),
-                              const Text(
-                                'We saved over 650 trees last year. Thanks for being part of HiHello’s sustainability efforts!',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  // Add link action
-                                },
-                                child: const Text(
-                                  'Learn More →',
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                ],
+              ),
+              child: Column(
+                children: [
+                  // Trees saved globally section
+                  Card(
+                    margin: const EdgeInsets.only(
+                        bottom: 16), // Add space between cards
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                  ),
-                ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween, // Distribute items
+                        children: [
+                          // Column for Text
+                          const Column(
+                            crossAxisAlignment: CrossAxisAlignment
+                                .start, // Align text to the left
+                            children: [
+                              Text(
+                                'Trees saved today, globally:',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                '1.71',
+                                style: TextStyle(
+                                    fontSize: 40, fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: 8),
+                            ],
+                          ),
 
-                // Third Page
-                SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                          // Image on the right side
+                          Image.asset(
+                            'assets/images/trees.png',
+                            height: 90,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  // Sustainability section
+                  Card(
+                    margin: const EdgeInsets.only(
+                        bottom: 16), // Add space between cards
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Center(
+                              child: Icon(Icons.eco,
+                                  color: Colors.green, size: 32)),
+                          const SizedBox(height: 8),
+                          const Text(
+                            'We saved over 650 trees last year. Thanks for being part of HiHello’s sustainability efforts!',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 14),
+                          ),
+                          TextButton(
+                            onPressed: () {}, // Add action
+                            child: const Text('Learn More',
+                                style: TextStyle(fontSize: 14)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Review section
+            Card(
+              margin: const EdgeInsets.all(19),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 16.0),
-                          padding: const EdgeInsets.all(12.0),
-                          decoration: BoxDecoration(
-                            color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Row(
-                            children: [
-                              const Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Trees saved today, globally:',
-                                      style: TextStyle(
-                                        fontSize: 16.0,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    SizedBox(height: 8),
-                                    Text(
-                                      '1.71',
-                                      style: TextStyle(
-                                        fontSize: 48.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Image.asset(
-                                'assets/images/trees.png', // Same image used in the previous code
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                            ],
-                          ),
+                        Image.asset(
+                          'assets/images/logo_play_store.png', // Replace with the actual path to your Play Store logo image
+                          height: 32, // Adjust the size of the logo as needed
+                          width: 32, // Adjust the width if necessary
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            color: Colors.green[50],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.eco,
-                                  color: Colors.green, size: 32),
-                              const SizedBox(height: 5),
-                              const Text(
-                                'We saved over 650 trees last year. Thanks for being part of HiHello’s sustainability efforts!',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16.0),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  // Add link action
-                                },
-                                child: const Text(
-                                  'Learn More →',
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                        const SizedBox(
+                            width:
+                                8), // Add some spacing between the image and text
+                        const Text(
+                          'Leave a review on the Play Store!',
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Let us know how we are doing by leaving a review on the Play Store.',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                    TextButton(
+                      onPressed: () {}, // Add action
+                      child: const Text('Take me there',
+                          style: TextStyle(fontSize: 14)),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // Release notes
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'What’s new?',
+                    style: TextStyle(fontSize: 18),
+                    textAlign: TextAlign.left,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 8),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey, width: 1.5),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(24.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Release notes  Version 6.1.0',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 8),
+                                Text(
+                                  'Check out what’s new in HiHello!',
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 18,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            // Section 2: Network Smarter with HiHello
+            const Row(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Aligning children to start (top)
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    'Network Smarter with HiHello',
+                    style: TextStyle(fontSize: 17),
+                    textAlign: TextAlign.left, // Text will start from the left
                   ),
                 ),
               ],
             ),
+
+            const SizedBox(height: 12),
+
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 1),
+              child: Row(
+                children: [
+                  const SizedBox(width: 16),
+                  buildFeatureCard(
+                    title: 'Email signatures',
+                    imagePath: 'assets/images/image.png',
+                    onTap: () {}, // Add action for onTap
+                  ),
+                  const SizedBox(width: 16),
+                  buildFeatureCard(
+                    title: 'Custom branding',
+                    imagePath: 'assets/images/image.png',
+                    onTap: () {}, // Add action for onTap
+                  ),
+                  const SizedBox(width: 16),
+                  buildFeatureCard(
+                    title: 'Custom branding',
+                    imagePath: 'assets/images/image.png',
+                    onTap: () {}, // Add action for onTap
+                  ),
+                  const SizedBox(width: 16),
+                  buildFeatureCard(
+                    title: 'Custom branding',
+                    imagePath: 'assets/images/image.png',
+                    onTap: () {}, // Add action for onTap
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            // Section 3: Need Help?
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 19.0, vertical: 17.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey, width: 1.5),
+                ),
+                padding: const EdgeInsets.all(24),
+                child: const Row(
+                  children: [
+                    Icon(
+                      Icons.help_outline,
+                      size: 30,
+                      color: Colors.black,
+                    ),
+                    SizedBox(width: 16),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Need Help?',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Learn more about how to use HiHello',
+                          style: TextStyle(fontSize: 11, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 18,
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 24),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildFeatureCard({
+    required String title,
+    required String imagePath,
+    required VoidCallback onTap, // Add a callback for tap
+  }) {
+    return GestureDetector(
+      onTap: onTap, // This will trigger the onTap callback
+      child: Container(
+        width: 140, // Adjusted card width for a smaller size
+        height: 190, // Adjusted card height for a smaller size
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            // Added border
+            color: Colors.grey.withOpacity(0.3), // Light grey border
+            width: 1.5, // Border width
           ),
-        ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 100, // Control the image height for consistent display
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(8),
+                  topRight: Radius.circular(8),
+                ),
+                image: DecorationImage(
+                  image: AssetImage(imagePath),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                title, // This can be any string like "Hello, Flutter!"
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
