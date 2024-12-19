@@ -1,3 +1,4 @@
+import 'package:HiHello/homepage.dart';
 import 'package:HiHello/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -212,8 +213,11 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                 ElevatedButton(
                   onPressed: _isChecked
                       ? () {
-                          // Handle account creation logic
-                          print("Account created");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BusinessCardPage()),
+                          );
                         }
                       : null,
                   style: ElevatedButton.styleFrom(
