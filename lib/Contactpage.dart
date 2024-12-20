@@ -253,6 +253,79 @@ class ProfilePage extends StatelessWidget {
               style: TextStyle(fontSize: 14, height: 1.5),
             ),
           ),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Goes by Manu (he/him/his)",
+                  style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                ),
+                const SizedBox(height: 8),
+                const Row(
+                  children: [
+                    Icon(Icons.security, color: Colors.blue),
+                    SizedBox(width: 8),
+                    Text("SOC 2 TYPE 2"),
+                    SizedBox(width: 16),
+                    Icon(Icons.gpp_good, color: Colors.blue),
+                    SizedBox(width: 8),
+                    Text("GDPR Ready"),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const Divider(),
+          // Information Section
+          buildInfoTile(Icons.location_on, "Palo Alto, California", "work"),
+          buildInfoTile(Icons.email, "support@hihello.com"),
+          buildInfoTile(Icons.description, "The Business Card. Reimagined."),
+          buildInfoTile(
+              Icons.credit_card, "HiHello Professional (for individuals)"),
+          buildInfoTile(Icons.credit_card,
+              "HiHello Business (for small to medium businesses)"),
+          buildInfoTile(Icons.credit_card,
+              "HiHello Enterprise (for medium-large organizations)"),
+          buildInfoTile(Icons.link, "www.hihello.com"),
+          buildInfoTile(Icons.social_distance, "Follow @ManuKumar on Twitter"),
+          const SizedBox(height: 16),
+          const SizedBox(height: 16),
+          const Divider(),
+          // Tags Section
+          buildSectionTitle("Tags"),
+          ListTile(
+            title: Text(
+              "No tags for this contact yet.",
+              style: TextStyle(color: Colors.grey[600]),
+            ),
+            trailing: const Icon(Icons.add),
+            onTap: () {
+              // Add tag logic
+            },
+          ),
+          const Divider(),
+          // Notes Section
+          buildSectionTitle("Notes"),
+          ListTile(
+            title: Text(
+              "No notes for this contact yet.",
+              style: TextStyle(color: Colors.grey[600]),
+            ),
+            trailing: const Icon(Icons.add),
+            onTap: () {
+              // Add note logic
+            },
+          ),
+          const Divider(),
+          // Connection Section
+          buildSectionTitle("Connection"),
+          const ListTile(
+            leading: Icon(Icons.link),
+            title: Text("Added Dec 2, 2024, 6:59 PM"),
+            subtitle: Text("Associated card: New Card"),
+          ),
         ],
       ),
     );
@@ -277,4 +350,24 @@ class CustomCurveClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
+
+Widget buildInfoTile(IconData icon, String title, [String? subtitle]) {
+  return ListTile(
+    leading: Icon(icon, color: Colors.purple),
+    title: Text(title),
+    subtitle: subtitle != null
+        ? Text(subtitle, style: const TextStyle(color: Colors.grey))
+        : null,
+  );
+}
+
+Widget buildSectionTitle(String title) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: Text(
+      title,
+      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    ),
+  );
 }
