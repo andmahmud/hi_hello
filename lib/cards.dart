@@ -1,3 +1,4 @@
+import 'package:HiHello/QRPage%20.dart';
 import 'package:flutter/material.dart';
 
 class CardData {
@@ -223,6 +224,10 @@ class _CardsPageState extends State<CardsPage> {
                 ),
                 onPressed: () {
                   print('Share button pressed for card $_currentIndex');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QRPage()),
+                  );
                 },
                 child: const Text(
                   'SHARE',
