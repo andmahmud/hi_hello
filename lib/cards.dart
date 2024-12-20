@@ -226,7 +226,7 @@ class _CardsPageState extends State<CardsPage> {
                   print('Share button pressed for card $_currentIndex');
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => QRPage()),
+                    MaterialPageRoute(builder: (context) => const QRPage()),
                   );
                 },
                 child: const Text(
