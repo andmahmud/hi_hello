@@ -1,4 +1,5 @@
 import 'package:HiHello/QRPage%20.dart';
+
 import 'package:flutter/material.dart';
 
 class CardData {
@@ -9,6 +10,7 @@ class CardData {
   final String phone;
   final String imageUrl;
   final String socialLink;
+  final String link; // Added a link attribute
 
   CardData({
     required this.name,
@@ -18,7 +20,13 @@ class CardData {
     required this.phone,
     required this.imageUrl,
     required this.socialLink,
+    required this.link, // Added the link parameter
   });
+
+  // Method to return card data as a string for QR code
+  String getCardInfo() {
+    return "Name: $name\nRole: $role\nCompany: $company\nEmail: $email\nPhone: $phone\nSocial: $socialLink";
+  }
 }
 
 class CardsPage extends StatefulWidget {
@@ -43,6 +51,7 @@ class _CardsPageState extends State<CardsPage> {
       phone: "+8801939237861",
       imageUrl: 'assets/images/image.png',
       socialLink: "https://facebook.com",
+      link: "https://example.com/mahmud-hasan", // Example link
     ),
     CardData(
       name: "MAHMUD HASAN",
@@ -52,6 +61,7 @@ class _CardsPageState extends State<CardsPage> {
       phone: "+8801939237861",
       imageUrl: 'assets/images/image.png',
       socialLink: "https://linkedin.com",
+      link: "https://example.com/mahmud-hasan-app", // Example link
     ),
   ]; // Card data
 
@@ -72,7 +82,6 @@ class _CardsPageState extends State<CardsPage> {
         ],
       ),
       body: SingleChildScrollView(
-        // Added for top-to-bottom scroll
         child: Column(
           children: [
             // Horizontal scrolling PageView for the cards
@@ -102,8 +111,7 @@ class _CardsPageState extends State<CardsPage> {
                             children: [
                               ClipRRect(
                                 borderRadius: const BorderRadius.vertical(
-                                  top: Radius.circular(16),
-                                ),
+                                    top: Radius.circular(16)),
                                 child: Image.asset(
                                   cards[index].imageUrl,
                                   height: 200,
@@ -123,9 +131,7 @@ class _CardsPageState extends State<CardsPage> {
                                 child: Center(
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
-                                      vertical: 4,
-                                      horizontal: 8,
-                                    ),
+                                        vertical: 4, horizontal: 8),
                                     decoration: BoxDecoration(
                                       color: Colors.grey,
                                       borderRadius: BorderRadius.circular(8),
@@ -224,9 +230,15 @@ class _CardsPageState extends State<CardsPage> {
                 ),
                 onPressed: () {
                   print('Share button pressed for card $_currentIndex');
+                  // Get the link of the active card and generate the QR code
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const QRPage()),
+                    MaterialPageRoute(
+                      builder: (context) => QRPage(
+                        qrData: cards[_currentIndex]
+                            .link, // Generate QR code for the link
+                      ),
+                    ),
                   );
                 },
                 child: const Text(
@@ -234,7 +246,7 @@ class _CardsPageState extends State<CardsPage> {
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

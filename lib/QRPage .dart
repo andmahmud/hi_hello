@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class QRPage extends StatelessWidget {
-  const QRPage({super.key});
+  final String qrData; // To hold the data passed from the CardsPage
+
+  // Constructor to accept the card's URL
+  const QRPage({super.key, required this.qrData});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +54,8 @@ class QRPage extends StatelessWidget {
                 ],
               ),
               child: QrImageView(
-                data: 'https://example.com', // QR code data
+                data:
+                    qrData, // Use the dynamic data passed from CardsPage (Card's URL)
                 size: 200,
                 embeddedImage: const AssetImage(
                     'assets/images/logo.png'), // Add your embedded image
@@ -72,7 +76,7 @@ class QRPage extends StatelessWidget {
             // Share Button
             ElevatedButton.icon(
               onPressed: () {
-                // Add share functionality here
+                // You can implement sharing functionality here using packages like 'share'
               },
               icon: const Icon(Icons.share_rounded),
               label: const Text('Share'),
@@ -82,19 +86,19 @@ class QRPage extends StatelessWidget {
                   side: const BorderSide(
                       color: Colors.grey, width: 1), // Add border here
                 ),
-                minimumSize:
-                    const Size(250, 50), // Set the width and height here
+                minimumSize: const Size(
+                    250, 50), // Set the width and height for the button
               ),
             ),
 
             const Spacer(),
-            // Bottom Navigation
+            // Bottom Navigation (with actions for email, QR scan, and messaging)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
                   onPressed: () {
-                    // Add email functionality
+                    // Add email functionality, e.g., open email client
                   },
                   icon: const Icon(Icons.email),
                 ),
@@ -112,7 +116,7 @@ class QRPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 40),
           ],
         ),
       ),
