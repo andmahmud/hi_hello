@@ -206,39 +206,6 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: Text(
-                        "Goes by Manu (he/him/his)",
-                        style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    const Padding(
-                      padding: EdgeInsets.all(
-                          8.0), // Removed 'const' from this Padding
-                      child: Row(
-                        children: [
-                          Icon(Icons.security, color: Colors.blue),
-                          SizedBox(width: 8),
-                          Text("SOC 2 TYPE 2"),
-                          SizedBox(width: 16),
-                          Icon(Icons.gpp_good, color: Colors.blue),
-                          SizedBox(width: 8),
-                          Text("GDPR Ready"),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
             const Divider(),
             buildInfoTile(Icons.location_on, "Palo Alto, California", "work"),
             buildInfoTile(Icons.email, "support@hihello.com"),
@@ -252,6 +219,7 @@ class ProfilePage extends StatelessWidget {
             buildInfoTile(Icons.link, "www.hihello.com"),
             buildInfoTile(
                 Icons.social_distance, "Follow @ManuKumar on Twitter"),
+            buildInfoTile(Icons.youtube_searched_for, "Subscribe @ManuKumar"),
             const SizedBox(height: 16),
             const Divider(),
             buildSectionTitle("Tags"),
@@ -281,74 +249,16 @@ class ProfilePage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                buildSectionTitle(
-                    "Connection"), // Custom method to create section title
+                buildSectionTitle("Connection"),
                 const ListTile(
                   leading: Icon(Icons.link),
-                  title: Text(
-                      "Added Dec 2, 2024, 6:59 PM"), // Use title here for the time
+                  title: Text("Added Dec 2, 2024, 6:59 PM"),
                 ),
               ],
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0, vertical: 2.0), // Smaller padding
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey), // Border around the box
-                borderRadius: BorderRadius.circular(8.0), // Rounded corners
-              ),
-              constraints: const BoxConstraints(
-                maxWidth: 330, // Set a maximum width for the container
-              ),
-              height: 70, // Fixed height for the container
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                      height: 8.0), // Space between title and dropdown
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Associated Card",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 14),
-                      ),
-                      DropdownButton<String>(
-                        value: "New Card", // Default selected value
-                        items: const [
-                          DropdownMenuItem(
-                            value: "New Card",
-                            child: Text("New Card"),
-                          ),
-                          DropdownMenuItem(
-                            value: "Old Card",
-                            child: Text("Old Card"),
-                          ),
-                          DropdownMenuItem(
-                            value: "No Card",
-                            child: Text("No Card"),
-                          ),
-                        ],
-                        onChanged: (String? newValue) {
-                          // Handle the change and update the active card
-                          print("Selected: $newValue");
-                        },
-                        isExpanded:
-                            false, // Keeps the dropdown at its default size
-                        underline: Container(), // Removes default underline
-                        icon: const Icon(
-                            Icons.arrow_drop_down), // Down arrow for dropdown
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                      height:
-                          8.0), // Space between the dropdown and any following content
-                ],
-              ),
-            ),
             const SizedBox(height: 30),
+            CardSelectionWidget(), // Add the card selection widget here
+            const SizedBox(height: 80),
           ],
         ),
       ),
@@ -424,4 +334,79 @@ class CustomCurveClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
+
+class CardSelectionWidget extends StatefulWidget {
+  @override
+  _CardSelectionWidgetState createState() => _CardSelectionWidgetState();
+}
+
+class _CardSelectionWidgetState extends State<CardSelectionWidget> {
+  String selectedCard = "New Card"; // Default selected value
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+          horizontal: 9.0, vertical: 5.0), // Smaller padding
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey), // Border around the box
+        borderRadius: BorderRadius.circular(8.0), // Rounded corners
+      ),
+      constraints: const BoxConstraints(
+        maxWidth: 330, // Set a maximum width for the container
+      ),
+      height:
+          90, // Increased height for the container to accommodate the line and text
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 8.0), // Space between title and dropdown
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                "Associated Card",
+                style: TextStyle(fontSize: 14),
+              ),
+              DropdownButton<String>(
+                value: selectedCard, // Default selected value
+                items: const [
+                  DropdownMenuItem(
+                    value: "New Card",
+                    child: Text("New Card"),
+                  ),
+                  DropdownMenuItem(
+                    value: "Old Card",
+                    child: Text("Old Card"),
+                  ),
+                  DropdownMenuItem(
+                    value: "No Card",
+                    child: Text("No Card"),
+                  ),
+                ],
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedCard =
+                        newValue ?? "New Card"; // Update the selected card
+                  });
+                },
+                isExpanded: false, // Keeps the dropdown at its default size
+                underline: Container(), // Removes default underline
+                icon: const Icon(
+                    Icons.arrow_drop_down), // Down arrow for dropdown
+              ),
+            ],
+          ),
+
+          Text(
+            "$selectedCard", // Display selected card
+            style: const TextStyle(
+              fontSize: 14,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
