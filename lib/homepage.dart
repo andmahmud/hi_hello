@@ -18,7 +18,7 @@ class _BusinessCardPageState extends State<BusinessCardPage> {
 
   final List<Widget> _pages = [
     Scanpage(),
-    const Contactpage(),
+    const ContactPage(),
     CardsPage(),
     DiscoverPage(),
     const SettingsPage(),
