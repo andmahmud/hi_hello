@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class Scanpage extends StatefulWidget {
   const Scanpage({super.key});
@@ -53,12 +52,7 @@ class _ScanpageState extends State<Scanpage> {
             ),
             const SizedBox(height: 100),
             ElevatedButton.icon(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QRScannerScreen()),
-                );
-              },
+              onPressed: () {},
               icon: const Icon(Icons.camera_alt),
               label: const Text("Scan"),
               style: ElevatedButton.styleFrom(
@@ -75,60 +69,5 @@ class _ScanpageState extends State<Scanpage> {
         ),
       ),
     );
-  }
-}
-
-class QRScannerScreen extends StatefulWidget {
-  @override
-  _QRScannerScreenState createState() => _QRScannerScreenState();
-}
-
-class _QRScannerScreenState extends State<QRScannerScreen> {
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController? controller;
-  String scannedData = '';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('QR Code Scanner')),
-      body: Column(
-        children: [
-          Expanded(
-            flex: 5,
-            child: QRView(
-              key: qrKey,
-              onQRViewCreated: _onQRViewCreated,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Center(
-              child: Text(
-                scannedData.isNotEmpty
-                    ? 'Scanned Data: $scannedData'
-                    : 'Scan a QR Code',
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _onQRViewCreated(QRViewController controller) {
-    this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        scannedData = scanData.code ?? '';
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
   }
 }
