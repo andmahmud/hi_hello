@@ -1,5 +1,5 @@
-import 'package:HiHello/loginpage.dart';
-import 'package:HiHello/signuppage.dart';
+import 'package:HiHello/screens/loginpage.dart';
+import 'package:HiHello/screens/signuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // For the logo
 

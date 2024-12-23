@@ -1,8 +1,8 @@
-import 'package:HiHello/Contactpage.dart';
-import 'package:HiHello/DiscoverPage.dart';
-import 'package:HiHello/ScanPage.dart';
-import 'package:HiHello/SettingsPage.dart';
-import 'package:HiHello/cards.dart';
+import 'package:HiHello/screens/Contactpage.dart';
+import 'package:HiHello/screens/DiscoverPage.dart';
+import 'package:HiHello/screens/ScanPage.dart';
+import 'package:HiHello/screens/SettingsPage.dart';
+import 'package:HiHello/screens/cards.dart';
 import 'package:flutter/material.dart';
 
 class BusinessCardPage extends StatefulWidget {

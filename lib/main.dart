@@ -1,4 +1,4 @@
-import 'package:HiHello/get_started_page.dart';
+import 'package:HiHello/screens/get_started_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,4 +1,4 @@
-import 'package:HiHello/QRPage%20.dart';
+import 'package:HiHello/screens/QRPage%20.dart';
 
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
-import 'package:HiHello/homepage.dart';
-import 'package:HiHello/loginpage.dart';
+import 'package:HiHello/screens/homepage.dart';
+import 'package:HiHello/screens/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sign_in_button/sign_in_button.dart';
