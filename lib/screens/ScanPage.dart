@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Scanpage extends StatefulWidget {
+  const Scanpage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _ScanpageState createState() => _ScanpageState();
 }
 
@@ -10,7 +13,7 @@ class _ScanpageState extends State<Scanpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Scan"),
+        title: const Text("Scan"),
       ),
       body: Center(
         child: Column(

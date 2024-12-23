@@ -1,5 +1,5 @@
-import 'package:HiHello/homepage.dart';
-import 'package:HiHello/signuppage.dart';
+import 'package:HiHello/screens/homepage.dart';
+import 'package:HiHello/screens/signuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // Import flutter_svg package
 import 'package:sign_in_button/sign_in_button.dart'; // Import sign_in_button package
@@ -68,7 +68,7 @@ class _LoginFormState extends State<LoginForm> {
                   color: Colors.purple, // Apply purple color to the logo
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Heading Text with custom purple color
               const Text(
@@ -81,7 +81,7 @@ class _LoginFormState extends State<LoginForm> {
                 textAlign: TextAlign.center,
               ),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               GestureDetector(
                 onTap: () => showsignupModal(context),
@@ -98,7 +98,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Email Field (only visible when not submitted)
               if (!_isEmailSubmitted)
@@ -132,7 +132,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
 
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Submit Button
               if (!_isEmailSubmitted)
@@ -153,7 +153,7 @@ class _LoginFormState extends State<LoginForm> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple, // Button color (purple)
-                    padding: EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                   ),
                   child: const Text(
                     'Submit',
@@ -176,7 +176,8 @@ class _LoginFormState extends State<LoginForm> {
                         color: Colors.black, // Purple color for the icon
                         size: 20, // Adjust the size of the icon
                       ),
-                      SizedBox(width: 8), // Space between the icon and text
+                      const SizedBox(
+                          width: 8), // Space between the icon and text
                       Text(
                         '$_submittedEmail', // Display the submitted email
                         style: const TextStyle(
@@ -189,7 +190,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
 
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Password Field (Only visible after clicking Submit)
               if (_isEmailSubmitted)
@@ -198,7 +199,7 @@ class _LoginFormState extends State<LoginForm> {
                   obscureText: !_isPasswordVisible,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                         color: Colors.black), // Custom purple label color
 
                     suffixIcon: IconButton(
@@ -231,7 +232,7 @@ class _LoginFormState extends State<LoginForm> {
                   },
                 ),
 
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Submit Button for Password (Below password field)
               if (_isEmailSubmitted)
@@ -251,12 +252,12 @@ class _LoginFormState extends State<LoginForm> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => BusinessCardPage()),
+                          builder: (context) => const BusinessCardPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple, // Button color (purple)
-                    padding: EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                   ),
                   child: const Text(
                     'Submit',
@@ -266,7 +267,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                 ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Or continue with social media login buttons
               const Column(
@@ -311,7 +312,7 @@ class _LoginFormState extends State<LoginForm> {
                 ],
               ),
 
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Social Media Login Buttons
               Column(
@@ -325,7 +326,7 @@ class _LoginFormState extends State<LoginForm> {
                         // Handle Google login
                         print("Google login pressed");
                       },
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                     ),
                   ),
                   Padding(
@@ -336,7 +337,7 @@ class _LoginFormState extends State<LoginForm> {
                         // Handle Facebook login
                         print("Facebook login pressed");
                       },
-                      padding: EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(6),
                     ),
                   ),
                   Padding(
@@ -347,10 +348,10 @@ class _LoginFormState extends State<LoginForm> {
                         // Handle Apple login
                         print("Apple login pressed");
                       },
-                      padding: EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(6),
                     ),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   // Microsoft Button
                   Padding(
                     padding: const EdgeInsets.all(5.0),
@@ -360,13 +361,13 @@ class _LoginFormState extends State<LoginForm> {
                         // Handle Microsoft login
                         print("Microsoft login pressed");
                       },
-                      padding: EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(6),
                     ),
                   ),
                 ],
               ),
 
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               const Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Row(
@@ -393,7 +394,7 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ),
 
-              SizedBox(height: 2),
+              const SizedBox(height: 2),
 
               GestureDetector(
                 onTap: () {},
@@ -411,7 +412,7 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               const Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Row(

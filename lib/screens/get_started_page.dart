@@ -8,7 +8,7 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _showloginModal(BuildContext context) {
+    void showloginModal(BuildContext context) {
       showModalBottomSheet(
         context: context,
         isScrollControlled: true,
@@ -21,14 +21,14 @@ class LandingPage extends StatelessWidget {
       );
     }
 
-    void _showsignupModal(BuildContext context) {
+    void showsignupModal(BuildContext context) {
       showModalBottomSheet(
         context: context,
         isScrollControlled: true,
         builder: (context) => Padding(
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: SimpleLoginPage(),
+          child: const SimpleLoginPage(),
         ),
       );
     }
@@ -92,7 +92,7 @@ class LandingPage extends StatelessWidget {
 
               // Get Started Button
               ElevatedButton(
-                onPressed: () => _showsignupModal(context), // Show signup modal
+                onPressed: () => showsignupModal(context), // Show signup modal
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   padding:
@@ -110,10 +110,10 @@ class LandingPage extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               GestureDetector(
-                onTap: () => _showloginModal(context),
+                onTap: () => showloginModal(context),
                 child: const Padding(
                   padding: EdgeInsets.only(bottom: 0.0),
                   child: Center(
