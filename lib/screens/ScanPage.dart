@@ -53,7 +53,10 @@ class _ScanpageState extends State<Scanpage> {
             const SizedBox(height: 100),
             ElevatedButton.icon(
               onPressed: () {},
-              icon: const Icon(Icons.camera_alt),
+              icon: const Icon(
+                Icons.camera_alt,
+                color: Colors.white,
+              ),
               label: const Text("Scan"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,

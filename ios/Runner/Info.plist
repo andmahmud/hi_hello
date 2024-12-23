@@ -28,9 +28,6 @@
     <key>LSRequiresIPhoneOS</key>
     <true/>
 
-    <!-- Camera permissions -->
-    <key>NSCameraUsageDescription</key>
-    <string>We need to access your camera to scan QR codes.</string>
 
     <!-- Supported interface orientations -->
     <key>UISupportedInterfaceOrientations</key>
