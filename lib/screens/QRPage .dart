@@ -1,3 +1,4 @@
+import 'package:HiHello/screens/CountryCode.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -179,15 +180,15 @@ class _QRPageState extends State<QRPage> {
         const SizedBox(height: 16),
         Row(
           children: [
-            DropdownButton<String>(
-              items: const [
-                DropdownMenuItem(
-                  value: "+1",
-                  child: Text("🇺🇸 +1"),
-                ),
-              ],
-              onChanged: (value) {},
-              value: "+1",
+            CountryCodeDropdown(
+              onCountrySelected: (selectedCode) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => QRPage(qrData: selectedCode),
+                  ),
+                );
+              },
             ),
             const SizedBox(width: 8),
             const Expanded(
