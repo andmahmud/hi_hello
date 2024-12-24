@@ -133,35 +133,75 @@ class _QRPageState extends State<QRPage> {
   }
 
   Widget _buildEmailContent() {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Center(child: Text("Email Your Card")),
-        TextField(
+        const Center(
+          child: Text(
+            "Email Your Card",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+        const SizedBox(height: 20),
+        const Text(
+          "Sent to",
+          style: TextStyle(
+            fontSize: 15,
+          ),
+        ),
+        const SizedBox(height: 10),
+        const TextField(
           decoration: InputDecoration(
-            labelText: "Name",
             hintText: "Name",
             border: OutlineInputBorder(),
           ),
         ),
-        SizedBox(height: 16),
-        TextField(
+        const SizedBox(height: 10),
+        const TextField(
           decoration: InputDecoration(
-            labelText: "Email",
             hintText: "name@email.com",
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.emailAddress,
         ),
-        SizedBox(height: 16),
-        TextField(
+        const SizedBox(height: 30),
+        const Text(
+          "Include a message(Optional)",
+          style: TextStyle(
+            fontSize: 15,
+          ),
+        ),
+        const SizedBox(height: 10),
+        const TextField(
           decoration: InputDecoration(
-            labelText: "Include a message ",
-            hintText: "Include a message ",
+            hintText: "Include a message(Optional) ",
             border: OutlineInputBorder(),
           ),
           maxLines: 3,
         ),
+        const SizedBox(height: 50),
+        ElevatedButton(
+          onPressed: () {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //       builder: (context) =>  ()),
+            // );
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor:
+                const Color.fromARGB(255, 4, 74, 132), // Button color (purple)
+            padding: const EdgeInsets.symmetric(vertical: 8),
+          ),
+          child: const Text(
+            'Submit',
+            style: TextStyle(
+              fontSize: 25,
+              color: Colors.white, // Text color inside the button
+            ),
+          ),
+        ),
+        const SizedBox(height: 10),
       ],
     );
   }
@@ -215,28 +255,48 @@ class _QRPageState extends State<QRPage> {
         const SizedBox(height: 16),
         Column(
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Row(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Row(
                     children: [
                       Switch(value: false, onChanged: (value) {}),
                       const Text("Hide your number"),
                     ],
                   ),
-                ),
-                Expanded(
-                  child: Row(
+                  Row(
                     children: [
                       Switch(value: false, onChanged: (value) {}),
                       const Text("Send via WhatsApp"),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
+        ElevatedButton(
+          onPressed: () {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //       builder: (context) =>  ()),
+            // );
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.purple, // Button color (purple)
+            padding: const EdgeInsets.symmetric(vertical: 8),
+          ),
+          child: const Text(
+            'SENT',
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.white, // Text color inside the button
+            ),
+          ),
+        ),
+        const SizedBox(height: 10),
       ],
     );
   }
