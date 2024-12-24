@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-class QRPage extends StatelessWidget {
+class QRPage extends StatefulWidget {
   final String qrData; // To hold the data passed from the CardsPage
 
-  // Constructor to accept the card's URL
   const QRPage({super.key, required this.qrData});
+
+  @override
+  State<QRPage> createState() => _QRPageState();
+}
+
+class _QRPageState extends State<QRPage> {
+  bool isEmailMode = false; // Toggle between Email and Message modes
+  bool isQRMode = true; // QR Code is active by default
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +25,8 @@ class QRPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Section Title
+            // Section Title (Always Constant)
             const Text(
               'SHARING',
               style: TextStyle(
@@ -39,80 +45,56 @@ class QRPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            // QR Code
-            Container(
-              padding: const EdgeInsets.all(12.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade300,
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: QrImageView(
-                data:
-                    qrData, // Use the dynamic data passed from CardsPage (Card's URL)
-                size: 200,
-                embeddedImage: const AssetImage(
-                    'assets/images/logo.png'), // Add your embedded image
-                embeddedImageStyle:
-                    const QrEmbeddedImageStyle(size: Size(40, 40)),
-                gapless: false,
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              'Tap QR code to go offline',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 30),
-            // Share Button
-            ElevatedButton.icon(
-              onPressed: () {
-                // You can implement sharing functionality here using packages like 'share'
-              },
-              icon: const Icon(Icons.share_rounded),
-              label: const Text('Share'),
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: const BorderSide(
-                      color: Colors.grey, width: 1), // Add border here
-                ),
-                minimumSize: const Size(
-                    250, 50), // Set the width and height for the button
-              ),
-            ),
+
+            // Conditional Content
+            if (isQRMode)
+              _buildQRCodeContent() // QR Code Content
+            else if (isEmailMode)
+              _buildEmailContent() // Email Page Content
+            else
+              _buildMessageContent(), // Message Page Content
 
             const Spacer(),
-            // Bottom Navigation (with actions for email, QR scan, and messaging)
+            // Bottom Navigation
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
                   onPressed: () {
-                    // Add email functionality, e.g., open email client
+                    setState(() {
+                      isQRMode = false;
+                      isEmailMode = true;
+                    });
                   },
-                  icon: const Icon(Icons.email),
+                  icon: Icon(
+                    Icons.email,
+                    color: isEmailMode ? Colors.black : Colors.grey,
+                  ),
                 ),
                 IconButton(
                   onPressed: () {
-                    // Add QR scan functionality
+                    setState(() {
+                      isQRMode = true;
+                      isEmailMode = false;
+                    });
                   },
-                  icon: const Icon(Icons.qr_code),
+                  icon: Icon(
+                    Icons.qr_code,
+                    color: isQRMode ? Colors.black : Colors.grey,
+                  ),
                 ),
                 IconButton(
                   onPressed: () {
-                    // Add messaging functionality
+                    setState(() {
+                      isQRMode = false;
+                      isEmailMode = false;
+                    });
                   },
-                  icon: const Icon(Icons.message),
+                  icon: Icon(
+                    Icons.message,
+                    color:
+                        !isQRMode && !isEmailMode ? Colors.black : Colors.grey,
+                  ),
                 ),
               ],
             ),
@@ -120,6 +102,141 @@ class QRPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildQRCodeContent() {
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade300,
+              blurRadius: 10,
+              offset: const Offset(0, 5),
+            ),
+          ],
+        ),
+        child: QrImageView(
+          data: widget.qrData,
+          size: 200,
+          embeddedImage: const AssetImage('assets/images/logo.png'),
+          embeddedImageStyle: const QrEmbeddedImageStyle(size: Size(40, 40)),
+          gapless: false,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEmailContent() {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Center(child: Text("Email Your Card")),
+        TextField(
+          decoration: InputDecoration(
+            labelText: "Name",
+            hintText: "Name",
+            border: OutlineInputBorder(),
+          ),
+        ),
+        SizedBox(height: 16),
+        TextField(
+          decoration: InputDecoration(
+            labelText: "Email",
+            hintText: "name@email.com",
+            border: OutlineInputBorder(),
+          ),
+          keyboardType: TextInputType.emailAddress,
+        ),
+        SizedBox(height: 16),
+        TextField(
+          decoration: InputDecoration(
+            labelText: "Include a message ",
+            hintText: "Include a message ",
+            border: OutlineInputBorder(),
+          ),
+          maxLines: 3,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMessageContent() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const TextField(
+          decoration: InputDecoration(
+            labelText: "Name",
+            hintText: "Name",
+            border: OutlineInputBorder(),
+          ),
+        ),
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            DropdownButton<String>(
+              items: const [
+                DropdownMenuItem(
+                  value: "+1",
+                  child: Text("🇺🇸 +1"),
+                ),
+              ],
+              onChanged: (value) {},
+              value: "+1",
+            ),
+            const SizedBox(width: 8),
+            const Expanded(
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: "Phone number",
+                  hintText: "Phone number",
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.phone,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
+        const TextField(
+          decoration: InputDecoration(
+            labelText: "Include a message (optional)",
+            hintText: "Include a message (optional)",
+            border: OutlineInputBorder(),
+          ),
+          maxLines: 3,
+        ),
+        const SizedBox(height: 16),
+        Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      Switch(value: false, onChanged: (value) {}),
+                      const Text("Hide your number"),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Switch(value: false, onChanged: (value) {}),
+                      const Text("Send via WhatsApp"),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
