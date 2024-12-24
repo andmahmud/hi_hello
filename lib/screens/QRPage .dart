@@ -23,84 +23,85 @@ class _QRPageState extends State<QRPage> {
         iconTheme: const IconThemeData(color: Colors.black),
         automaticallyImplyLeading: false,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            // Section Title (Always Constant)
-            const Text(
-              'SHARING',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: Colors.grey,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                'SHARING',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey,
+                ),
               ),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'WORK CARD',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+              const SizedBox(height: 10),
+              const Text(
+                'WORK CARD',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
-            ),
-            const SizedBox(height: 50),
+              const SizedBox(height: 50),
 
-            // Conditional Content
-            if (isQRMode)
-              _buildQRCodeContent() // QR Code Content
-            else if (isEmailMode)
-              _buildEmailContent() // Email Page Content
-            else
-              _buildMessageContent(), // Message Page Content
+              if (isQRMode)
+                _buildQRCodeContent() // QR Code Content
+              else if (isEmailMode)
+                _buildEmailContent() // Email Page Content
+              else
+                _buildMessageContent(), // Message Page Content
 
-            const Spacer(),
-            // Bottom Navigation
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      isQRMode = false;
-                      isEmailMode = true;
-                    });
-                  },
-                  icon: Icon(
-                    Icons.email,
-                    color: isEmailMode ? Colors.black : Colors.grey,
+              const SizedBox(height: 40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isQRMode = false;
+                        isEmailMode = true;
+                      });
+                    },
+                    icon: Icon(
+                      Icons.email,
+                      color: isEmailMode ? Colors.black : Colors.grey,
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      isQRMode = true;
-                      isEmailMode = false;
-                    });
-                  },
-                  icon: Icon(
-                    Icons.qr_code,
-                    color: isQRMode ? Colors.black : Colors.grey,
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isQRMode = true;
+                        isEmailMode = false;
+                      });
+                    },
+                    icon: Icon(
+                      Icons.qr_code,
+                      color: isQRMode ? Colors.black : Colors.grey,
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      isQRMode = false;
-                      isEmailMode = false;
-                    });
-                  },
-                  icon: Icon(
-                    Icons.message,
-                    color:
-                        !isQRMode && !isEmailMode ? Colors.black : Colors.grey,
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isQRMode = false;
+                        isEmailMode = false;
+                      });
+                    },
+                    icon: Icon(
+                      Icons.message,
+                      color: !isQRMode && !isEmailMode
+                          ? Colors.black
+                          : Colors.grey,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 40),
-          ],
+                ],
+              ),
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );
@@ -251,9 +252,16 @@ class _QRPageState extends State<QRPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        const SizedBox(height: 20),
+        const Text(
+          "Sent to",
+          style: TextStyle(
+            fontSize: 15,
+          ),
+        ),
+        const SizedBox(height: 8),
         const TextField(
           decoration: InputDecoration(
-            labelText: "Name",
             hintText: "Name",
             border: OutlineInputBorder(),
           ),
@@ -275,7 +283,6 @@ class _QRPageState extends State<QRPage> {
             const Expanded(
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: "Phone number",
                   hintText: "Phone number",
                   border: OutlineInputBorder(),
                 ),
@@ -285,15 +292,20 @@ class _QRPageState extends State<QRPage> {
           ],
         ),
         const SizedBox(height: 16),
+        const Text(
+          "Include a message (optional)",
+          style: TextStyle(
+            fontSize: 15,
+          ),
+        ),
+        const SizedBox(height: 10),
         const TextField(
           decoration: InputDecoration(
-            labelText: "Include a message (optional)",
             hintText: "Include a message (optional)",
             border: OutlineInputBorder(),
           ),
           maxLines: 3,
         ),
-        const SizedBox(height: 16),
         Column(
           children: [
             Padding(
@@ -317,7 +329,6 @@ class _QRPageState extends State<QRPage> {
             ),
           ],
         ),
-        const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {
             // Navigator.push(
