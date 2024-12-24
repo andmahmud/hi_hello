@@ -45,7 +45,7 @@ class _QRPageState extends State<QRPage> {
                 color: Colors.black,
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 50),
 
             // Conditional Content
             if (isQRMode)
@@ -108,26 +108,67 @@ class _QRPageState extends State<QRPage> {
 
   Widget _buildQRCodeContent() {
     return Center(
-      child: Container(
-        padding: const EdgeInsets.all(12.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade300,
-              blurRadius: 10,
-              offset: const Offset(0, 5),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade300,
+                  blurRadius: 10,
+                  offset: const Offset(0, 5),
+                ),
+              ],
             ),
-          ],
-        ),
-        child: QrImageView(
-          data: widget.qrData,
-          size: 200,
-          embeddedImage: const AssetImage('assets/images/logo.png'),
-          embeddedImageStyle: const QrEmbeddedImageStyle(size: Size(40, 40)),
-          gapless: false,
-        ),
+            child: QrImageView(
+              data: widget.qrData,
+              size: 200,
+              embeddedImage: const AssetImage('assets/images/logo.png'),
+              embeddedImageStyle:
+                  const QrEmbeddedImageStyle(size: Size(40, 40)),
+              gapless: false,
+            ),
+          ),
+          const SizedBox(height: 20),
+          const Text(
+            "Tab QR Code to go offline",
+            style: TextStyle(
+              // Add your share functionality here icon: const Icon(Icons.share),
+              fontSize: 15,
+            ),
+          ),
+          const SizedBox(height: 50),
+          SizedBox(
+            // width: double.infinity, // Full width
+            child: OutlinedButton.icon(
+              onPressed: () {
+                // Your functionality here
+              },
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(
+                    color: Colors.grey, width: 2), // Border color and width
+                padding: const EdgeInsets.symmetric(
+                  vertical: 15, // Reduce vertical padding for a smaller box
+                  horizontal: 80, // Adjust horizontal padding
+                ),
+              ),
+              icon: const Icon(Icons.share,
+                  color: Colors.black, size: 30), // Bigger icon
+              label: const Text(
+                'Submit',
+                style: TextStyle(
+                  fontSize: 20, // Slightly smaller text size
+                  color: Colors.black, // Text color
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+        ],
       ),
     );
   }
@@ -276,6 +317,7 @@ class _QRPageState extends State<QRPage> {
             ),
           ],
         ),
+        const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {
             // Navigator.push(
@@ -285,13 +327,14 @@ class _QRPageState extends State<QRPage> {
             // );
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.purple, // Button color (purple)
+            backgroundColor:
+                const Color.fromARGB(255, 4, 47, 82), // Button color (purple)
             padding: const EdgeInsets.symmetric(vertical: 8),
           ),
           child: const Text(
-            'SENT',
+            'SEND',
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 25,
               color: Colors.white, // Text color inside the button
             ),
           ),
