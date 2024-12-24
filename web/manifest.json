@@ -1,11 +1,11 @@
 {
-    "name": "new_project",
-    "short_name": "new_project",
+    "name": "soft_card",
+    "short_name": "soft_card",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A soft_card project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
