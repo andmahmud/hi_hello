@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class CountryCodeDropdown extends StatefulWidget {
   const CountryCodeDropdown({super.key, this.onCountrySelected});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CountryCodeDropdownState createState() => _CountryCodeDropdownState();
 }
 
